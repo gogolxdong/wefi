@@ -136,7 +136,7 @@ const Nft = () => {
                 <div>
                     <Row>
                         <Col span={10}>{intl.get('NFTName')}：</Col>
-                        <Col span={14}>{intl.get('global2')}</Col>
+                        <Col span={14}>{intl.get('global')}</Col>
                         <Col span={10}>{intl.get('IssuanceS')}：</Col>
                         <Col span={14}>{intl.get('nums')}</Col>
                         <Col span={10}>{intl.get('IssuanceMethod')}：</Col>

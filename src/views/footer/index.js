@@ -67,11 +67,11 @@ const Footer = () => {
                         <img src={icon1}></img>
                         <img src={icon2}></img>
                         <img src={icon3}></img>
-                        <img src={icon4}></img>
+                        <a href="https://discord.gg/qq4bNHcM" target="_blank"><img src={icon4}></img></a>
                     </div>
                     <div>
-                        <img src={icon5}></img>
-                        <img src={icon6}></img>
+                        <a href="https://twitter.com/WeFi_DAO" target="_blank"><img src={icon5}></img></a>
+                        <a href="https://t.me/wefi_official" target="_blank"><img src={icon6}></img></a>
                         <img src={icon7}></img>
                         <img src={icon8}></img>
                     </div>

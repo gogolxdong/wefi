@@ -93,8 +93,7 @@ const Bbq = () => {
                     <div>
                         <span></span>
                         <p><span>33%</span><span>{intl.get('SocialMining')}
-                        <br />
-                        {intl.get('SocialMining2')}</span></p>
+                        <br /></span></p>
                     </div>
                     <div>
                         <span></span>

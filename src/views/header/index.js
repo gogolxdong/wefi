@@ -75,6 +75,10 @@ const Nav = () => {
     const showModal = () => {
         setModalVisible(true)
     }
+    const scrollToBottom = () => {
+        const t = document.querySelector('.App').offsetHeight
+        window.scroll({ top: t, left: 0, behavior: 'smooth' });
+    }
     const items = [
         { label: (<a href="/">{intl.get("HOME")}</a>), key: 'item-1' }, // 菜单项务必填写 key
         {
@@ -88,7 +92,7 @@ const Nav = () => {
         },
 
         { label: (<Popover content={content}>{intl.get("DOWNLOAD")}</Popover>), key: 'item-3' }, // 菜单项务必填写 key
-        { label: (intl.get("About")), key: 'item-4' }, // 菜单项务必填写 key
+        { label: (<span onClick={scrollToBottom}>{intl.get("About")}</span>), key: 'item-4' }, // 菜单项务必填写 key
     ];
     const items2 = [
         {
@@ -139,7 +143,8 @@ const Nav = () => {
             move()
         },5000)
         const width = document
-        axios.get('https://wefi.space/home-web/index/getAffiche').then((res)=>{
+        const language = window.localStorage.getItem('language') || 'zh'
+        axios.get(`https://wefi.space/home-web/index/getAffiche?language=${language}`).then((res)=>{
             if(res.status == 200){
                 setannouncementList(res.data.data||[])
                 let index = 0;
