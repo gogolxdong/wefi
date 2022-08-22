@@ -321,36 +321,40 @@
             text-align: center;
             margin-top: 30px;
         }
-
-        .distribute_left,
-        .distribute_right {
-            background-size: 100%;
-            background-repeat: no-repeat;
-            background-color: #fff;
-
-            p {
-                font-size: 12px;
-                text-align: left;
+        .distribute_wrap {
+            display: flex;
+            margin: 20px;
+            .distribute_left,
+            .distribute_right {
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-color: #fff;
+    
+                p {
+                    font-size: 12px;
+                    text-align: left;
+                }
+    
+                span {
+                    width: 10px;
+                    height: 2.5px;
+                    margin-bottom: 10px;
+                }
+    
+                div {
+                    font-size: 8px;
+                }
+    
+                width: 90%;
+                height: 180px;
+                margin: 0 auto;
+                padding: 0px;
+                float: none;
+                margin-bottom: 20px;
+                padding: 10px;
             }
-
-            span {
-                width: 10px;
-                height: 2.5px;
-                margin-bottom: 10px;
-            }
-
-            div {
-                font-size: 8px;
-            }
-
-            width: 90%;
-            height: 180px;
-            margin: 0 auto;
-            padding: 0px;
-            float: none;
-            margin-bottom: 20px;
-            padding: 10px;
         }
+
     }
 
     .ntf_dev,

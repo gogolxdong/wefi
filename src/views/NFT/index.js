@@ -108,48 +108,51 @@ const Nft = () => {
         </div>
         <div className="nft_distribute">
             <p>{intl.get('NFTD')}</p>
-            <div className="distribute_left">
-                <p>WeFi{intl.get('functional')}NFT</p>
-                <span></span>
-                <div>
-                    <Row>
-                        <Col span={10}>{intl.get('NFTName')}：</Col>
-                        <Col span={14}>{intl.get('global')}</Col>
-                        <Col span={10}>{intl.get('IssuanceS')}：</Col>
-                        <Col span={14}>{intl.get('issue')}</Col>
-                        <Col span={10}>{intl.get('IssuanceMethod')}：</Col>
-                        <Col span={14}>{intl.get('WhitelistINO')}</Col>
+            <div className="distribute_wrap">
+                <div className="distribute_left">
+                    <p>WeFi{intl.get('functional')}NFT</p>
+                    <span></span>
+                    <div>
+                        <Row>
+                            <Col span={10}>{intl.get('NFTName')}：</Col>
+                            <Col span={14}>{intl.get('global')}</Col>
+                            <Col span={10}>{intl.get('IssuanceS')}：</Col>
+                            <Col span={14}>{intl.get('issue')}</Col>
+                            <Col span={10}>{intl.get('IssuanceMethod')}：</Col>
+                            <Col span={14}>{intl.get('WhitelistINO')}</Col>
 
-                        <Col span={10}>{intl.get('Airdropi')}：</Col>
-                        <Col span={14}>{intl.get('Airdropisf')}</Col>
+                            <Col span={10}>{intl.get('Airdropi')}：</Col>
+                            <Col span={14}>{intl.get('Airdropisf')}</Col>
 
-                        <Col span={10}>{intl.get('WhitelistRound')}： </Col>
-                        <Col span={14}>{intl.get('mintprice')}</Col>
-                        <Col span={10}>{intl.get('INOPublicRound')}：</Col>
-                        <Col span={14}>{intl.get('mintprice4')}</Col>
-                    </Row>
+                            <Col span={10}>{intl.get('WhitelistRound')}： </Col>
+                            <Col span={14}>{intl.get('mintprice')}</Col>
+                            <Col span={10}>{intl.get('INOPublicRound')}：</Col>
+                            <Col span={14}>{intl.get('mintprice4')}</Col>
+                            <Col span={10}>{intl.get('definition')}：</Col>
+                            <Col span={14}>{intl.get('definitionCon')}</Col>
+                        </Row>
+                    </div>
                 </div>
-            </div>
-            <div className="distribute_right">
-                <p>WeFi{intl.get('benefit')}NFT</p>
-                <span></span>
-                <div>
-                    <Row>
-                        <Col span={10}>{intl.get('NFTName')}：</Col>
-                        <Col span={14}>{intl.get('global')}</Col>
-                        <Col span={10}>{intl.get('IssuanceS')}：</Col>
-                        <Col span={14}>{intl.get('nums')}</Col>
-                        <Col span={10}>{intl.get('IssuanceMethod')}：</Col>
-                        <Col span={14}>{intl.get('WhitelistINO2')}</Col>
-                        <Col span={10}>{intl.get('WhitelistRound')}：</Col>
-                        <Col span={14}>{intl.get('mintprice2')}</Col>
-                        <Col span={10}>{intl.get('INOPublicRound')}：</Col>
-                        <Col span={14}>{intl.get('mintprice3')}</Col>
-                    </Row>
+                <div className="distribute_right">
+                    <p>WeFi{intl.get('benefit')}NFT</p>
+                    <span></span>
+                    <div>
+                        <Row>
+                            <Col span={10}>{intl.get('NFTName')}：</Col>
+                            <Col span={14}>{intl.get('global2')}</Col>
+                            <Col span={10}>{intl.get('IssuanceS')}：</Col>
+                            <Col span={14}>{intl.get('nums')}</Col>
+                            <Col span={10}>{intl.get('IssuanceMethod')}：</Col>
+                            <Col span={14}>{intl.get('WhitelistINO2')}</Col>
+                            <Col span={10}>{intl.get('WhitelistRound')}：</Col>
+                            <Col span={14}>{intl.get('mintprice2')}</Col>
+                            <Col span={10}>{intl.get('INOPublicRound')}：</Col>
+                            <Col span={14}>{intl.get('mintprice3')}</Col>
+                            <Col span={10}>{intl.get('definition')}：</Col>
+                            <Col span={14}>{intl.get('definitionCon2')}</Col>
+                        </Row>
+                    </div>
                 </div>
-            </div>
-            <div>
-
             </div>
         </div>
         <div className="ntf_dev">
