@@ -1,0 +1,27 @@
+.introduce {
+    width: 100%;
+    height: 1034px;
+    background-image: url(./../../statics/bg2.png);
+    background-size: 100%;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+
+    p {
+        font-size: 40px;
+        color: #fff;
+        width: 50%;
+        position: absolute;
+        bottom: 150px;
+        position: absolute;
+        left: 50%;
+        margin-left: -25%;
+
+        &:last-child {
+            text-align: center;
+            font-size: 16px;
+            bottom: 90px;
+        }
+    }
+
+}

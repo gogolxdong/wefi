@@ -1,0 +1,305 @@
+.bbq_pre_sale {
+    .pre_sale_left {
+        text-align: left;
+        padding-left: 20%;
+        padding-top: 100px;
+
+        p {
+            font-size: 22px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #101010;
+            margin-top: 30px;
+        }
+
+        p {
+            &:first-child {
+                font-size: 42px;
+                font-family: Microsoft YaHei;
+                font-weight: 400;
+                color: #101010;
+                margin-top: 0px;
+            }
+
+            &:nth-child(4) {
+                button {
+                    width: 80px;
+                    height: 35px;
+                    line-height: 15px;
+                    background: #30549B;
+                    border-radius: 25px;
+                    margin-left: 30px;
+                    color: #fff;
+
+                    span {
+                        margin-left: -10px;
+                    }
+
+                    &:last-child {
+                        background: #FFFFFF;
+                        color: #30549B;
+
+                        span {
+                            margin-left: -5px;
+                        }
+                    }
+                }
+
+            }
+
+
+        }
+
+        .sale_img {
+            display: none;
+        }
+
+        .add,
+        .cut {
+            display: inline-block;
+            width: 32px;
+            // height: 32px;
+            line-height: 28px;
+            background: #FFFFFF;
+            border: 1px solid #30549B;
+            border-radius: 50%;
+            text-align: center;
+            color: #30549B;
+            font-weight: bold;
+            vertical-align: middle;
+            margin: 0 30px;
+            cursor: pointer;
+            span{
+                margin-left: -5px;
+            }
+        }
+
+        >button {
+            width: 180px;
+            height: 43px;
+            background: #C3003A;
+            border-radius: 27px;
+            font-weight: 400;
+            color: #FFFFFF;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    }
+
+    .pre_sale_right {
+        padding-left: 50px;
+        padding-top: 80px;
+
+        p {
+            text-align: left;
+            margin-left: 200px;
+        }
+
+    }
+}
+
+.bbq_int,
+.bbq_dis,
+.bbq_rai {
+    padding-left: 20%;
+
+    p {
+        font-size: 18px;
+        font-family: Source Han Sans CN;
+        font-weight: 300;
+        color: #818181;
+
+        &:first-child {
+            font-size: 28px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #010101;
+        }
+
+    }
+}
+
+.bbq_int {
+    padding-bottom: 90px;
+}
+
+.bbq_rai {
+    padding-bottom: 125px;
+    padding-top: 85px;
+
+    p {
+        font-size: 16px;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #5D5D5D;
+        line-height: 28px;
+
+        span {
+            &:first-child {
+                display: inline-block;
+                width: 26px;
+                height: 26px;
+                background: #003884;
+                border-radius: 50%;
+                text-align: center;
+                color: #FFFFFF;
+                margin-right: 20px;
+            }
+
+        }
+
+    }
+}
+
+.bbq_dis {
+    overflow: auto;
+    padding-bottom: 50px;
+
+    >div {
+        &:last-child {
+            display: block;
+        }
+
+        &:nth-child(2) {
+            display: none;
+        }
+
+        width: 70%;
+
+        >p {
+            font-size: 28px;
+            font-family: Arial;
+            font-weight: bold;
+            color: #010101;
+            line-height: 58px;
+            margin-bottom: 0px;
+            padding-left: 438px;
+            text-align: left;
+        }
+
+        >span {
+            display: block;
+            width: 2px;
+            height: 36px;
+            background-color: #5F89C6;
+            margin-left: 488px;
+        }
+
+        .chart {
+            overflow: auto;
+            padding-left: 50px;
+            text-align: left;
+
+            div {
+                float: left;
+
+
+                &:nth-child(2),
+                &:first-child,
+                &:nth-child(3),
+                &:nth-child(4),
+                &:nth-child(5) {
+                    >span {
+                        border-right: 0px;
+                    }
+                }
+
+                &:nth-child(6) {
+                    position: relative;
+
+                    >p {
+                        &:last-child {
+                            position: absolute;
+                            top: 45px;
+                            left: 135px;
+                        }
+                    }
+                }
+
+                >span {
+                    display: inline-block;
+                    width: 146px;
+                    height: 40px;
+                    border: 2px solid #5F89C6;
+                    border-bottom: 0px;
+                }
+
+                >p {
+                    font-size: 16px;
+                    font-family: Microsoft YaHei;
+                    font-weight: 400;
+                    color: #707070;
+                    margin-left: -15px;
+
+                    span {
+                        &:first-child{
+                            display: block;
+                            width: 47px;
+                            height: 47px;
+                            background: #135EB0;
+                            border-radius: 50%;
+                            text-align: center;
+                            color: #FFFFFF;
+                            font-size: 18px;
+                            padding-top: 10px;
+                        }
+                        &:last-child{
+                            display: block;
+                            width: 100px;
+                            text-align: left;
+                        }
+                        
+                    }
+                }
+            }
+
+        }
+
+        &:last-child {
+            font-size: 14px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #ADADAD;
+            line-height: 28px;
+            text-align: center;
+        }
+    }
+}
+
+.bbq_deflation {
+    padding-left: 20%;
+    height: 354px;
+    background-image: url(./../../statics/bbq/bg2.png);
+    padding-top: 30px;
+
+    >p {
+        font-size: 28px;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #FFFFFF;
+        line-height: 58px;
+    }
+
+    div>p {
+        margin-top: 50px;
+        float: left;
+        color: #FFFFFF;
+        margin-right: 200px;
+        font-size: 16px;
+        >p{
+            float: right;
+            width: 150px;
+            vertical-align: middle;
+            margin-top: 20px;
+        }
+        &:last-child{
+            p{
+               margin-top: 10px;
+            }
+        }
+    }
+
+    img {
+        margin-right: 20px;
+    }
+}

@@ -1,0 +1,104 @@
+.app_download {
+    padding: 60px;
+
+    .app_left {
+        text-align: right;
+        display: block;
+        div p span {
+            &:first-child {
+                font-size: 40px;
+            }
+
+            &:last-child {
+                color: #7D7D7D;
+                margin-left: 20px;
+            }
+        }
+        .ant-col-8,.ant-col-6{
+            text-align: left;
+        }
+        div {
+            p {
+                &:first-child {
+                    margin-bottom: 0px;
+                    margin-left: 25px;
+                }
+
+                &:last-child {
+                    font-size: 14px;
+                    color: #03539F;
+                    text-align: center;
+                    margin-left: 25px;
+                    text-align: left;
+                }
+            }
+        }
+
+        img {
+            width: 76px;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 188px;
+            height: 42px;
+            background: #FFFFFF;
+            border: 1px solid #30549B;
+            border-radius: 2px;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #30549B;
+        }
+    }
+
+    .app_right {
+        span {
+            display: inline-block;
+            width: 1px;
+            height: 96px;
+            background-color: #EBEEEF;
+            float: left;
+        }
+
+        div {
+            margin-left: 80px;
+
+            &:last-child {
+                margin-top: 30px;
+            }
+
+            img {
+                width: 28px;
+                margin-left: 40px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.bottom {
+    padding-top: 12px;
+    text-align: center;
+    color: #9E9E9E;
+    width: 100%;
+    height: 78px;
+    background-color: #58595a;
+    font-size: 12px;
+    vertical-align: middle;
+
+    p {
+        display: block;
+    }
+
+    p span {
+        display: inline-block;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+}
+.mobile_popover{
+    display: none;
+}
+.pc_popover{
+    display: block;
+}

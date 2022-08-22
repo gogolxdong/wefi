@@ -1,0 +1,33 @@
+.dow_content {
+    width: 100%;
+    height:1033px;
+    background-image: url(./../../statics/bg1.png);
+    background-size: 100% 100%;
+    background-position: 40% 0px;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+
+    img {
+        width: 113px;
+        vertical-align: middle;
+        margin-top: 550px;
+        margin-bottom: 30px;
+    }
+
+    >p:nth-child(2) {
+        font-size: 40px;
+        font-family: Source Han Sans CN;
+        font-weight: 300;
+        margin-bottom: 23px;
+    }
+
+    button {
+        width: 200px;
+        height: 48px;
+        background: #FFFFFF;
+        border-radius: 12px;
+        margin-top: 50px;
+    }
+}

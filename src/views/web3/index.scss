@@ -1,0 +1,184 @@
+.webI,
+.webNFT,
+.BBQ,
+.DAO,
+.future_plan,
+.dev_route {
+    width: 100%;
+    text-align: center;
+    padding-top: 120px;
+
+    p {
+        font-size: 16px;
+
+        &:first-child {
+            font-size: 40px;
+        }
+
+        &:nth-child(2) {
+            width: 730px;
+            margin: 0 auto;
+            margin-bottom: 80px;
+        }
+    }
+
+    img {
+        width: 50%;
+    }
+
+    button {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 60px;
+        background: #30549B;
+        border-radius: 12px;
+        width: 150px;
+        height: 38px;
+        color: #fff;
+        font-size: 18px;
+        padding-top: 1px;
+    }
+}
+.webNFT {
+    background-color: #F6F6F6;
+    padding-bottom: 120px;
+    img {
+        width: 20%;
+        &:nth-child(4){
+            margin-left: 77px;
+        }
+       
+    }
+}
+
+.DAO {
+    text-align: right;
+    padding-bottom: 140px;
+
+    .dao_right {
+        text-align: left;
+        padding-top: 120px;
+        padding-left: 40px;
+
+        button {
+            float: left;
+            margin-top: 0;
+        }
+
+        p {
+            font-size: 16px;
+            width: 500px;
+            margin: 0px;
+            margin-bottom: 80px;
+            &:first-child {
+                font-size: 40px;
+            }
+        }
+
+        img {
+            display: none;
+        }
+    }
+
+    img {
+        width: 35%;
+        text-align: right;
+    }
+}
+
+.BBQ {
+    background-color: #F6F6F6;
+    padding-bottom: 140px;
+
+    img {
+        width: 30%;
+    }
+}
+
+.dev_route {
+    height: 650px;
+    text-align: center;
+    margin: 0 auto;
+
+    .route {
+        overflow: auto;
+        text-align: center;
+        position: relative;
+        font-size: 16px;
+        width: 1211px;
+        margin: 0 auto;
+        overflow: hidden;
+        a {
+            &:first-child {
+                background-image: url(./../../statics/left.png);
+                background-repeat: no-repeat;
+                left: 0;
+            }
+
+            &:last-child {
+                background-image: url(./../../statics/right.png);
+                background-repeat: no-repeat;
+                background-position-x: 10px;
+                right: 0;
+            }
+
+            position: absolute;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            top:135px;
+            z-index: 10;
+
+        }
+        .route_div{
+            width: 3000px;
+            margin: 0;
+            margin-left: 0px;
+            text-align: left;
+            div {
+                display: inline-block;
+                width: 341px;
+                height: 289px;
+                background: #FFFFFF;
+                border: 1px solid #E1E1E1;
+                border-radius: 2px;
+                margin-left: 47px;
+                text-align: left;
+                padding: 32px;
+                overflow: auto;
+    
+                p {
+                    &:nth-child(2) {
+                        width: 100%;
+                        margin-top: 50px;
+                        margin-bottom: 50px;
+                    }
+    
+                    &:last-child {
+                        position: absolute;
+                        bottom: 10px;
+                    }
+    
+                    &:first-child {
+                        font-size: 26px;
+                    }
+    
+                    img {
+                        width: 58px;
+                        float: right;
+                    }
+    
+                }
+            }
+        }
+        }
+
+        
+}
+
+.future_plan {
+    height: 400px;
+    background-image: url(./../../statics/future.png);
+    background-size: 100%;
+}

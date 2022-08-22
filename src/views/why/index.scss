@@ -1,0 +1,77 @@
+.why {
+    .wefi {
+        color: #101010;
+        text-align: center;
+        font-size: 16px;
+        padding-bottom: 90px;
+        padding-top: 85px;
+
+        p {
+            &:first-child {
+                font-size: 40px;
+
+            }
+        }
+
+        div {
+            span {
+                &:first-child {
+                    font-size: 80px;
+                }
+
+                &:nth-child(2) {
+                    font-size: 35px;
+                }
+
+                &:last-child {
+                    display: block;
+                    text-align: left;
+                    margin-left: 30%;
+                    margin-top: -5%;
+                }
+            }
+        }
+    }
+
+    .highlight {
+        text-align: center;
+        background-color: #1eaaf1;
+        padding-bottom: 100px;
+
+        p {
+            font-size: 40px;
+            color: #fff;
+            padding: 60px 0;
+        }
+
+        img {
+            width: 45%;
+        }
+    }
+
+    .plateDivision {
+        text-align: center;
+
+        p {
+            font-size: 40px;
+            margin-top: 60px;
+        }
+
+        >img {
+            display: none;
+        }
+
+        div {
+            display: block;
+            margin-top: 10px;
+
+            img {
+                width: 15%;
+                // border: 2px dotted #ccc;
+                margin-left: 10px;
+            }
+        }
+
+
+    }
+}

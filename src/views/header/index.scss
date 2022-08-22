@@ -1,0 +1,282 @@
+.top_nav {
+    height: 44px;
+    background-color: #57585A;
+    font-size: 14px;
+
+    .menu_top {
+        width: 25%;
+        height: 44px;
+        line-height: 44px !important;
+        background-color: #57585A !important;
+        color: #fff;
+        float: right;
+        margin-left: -10%;
+        font-size: 16px;
+
+        .ant-menu {
+            background: none !important;
+            color: #fff;
+            line-height: 46px;
+            font-size: 16px;
+        }
+
+        .ant-menu-title-content a {
+            color: #fff;
+        }
+        .products{
+            span{
+                font-size: 14px;
+            }
+            
+        }
+    }
+
+    .lang_select {
+        float: left;
+        width: 10%;
+        height: 43px;
+        line-height: 43px;
+        margin-left: 20%;
+
+        // .dropdown {
+        //     color: #fff;
+        //     font-size: 14px;
+
+        //     span {
+        //         cursor: pointer;
+        //         display: block;
+
+        //     }
+        //     span::after {
+        //         content: "";
+        //         border-top: solid 5px #fff;
+        //         border-left: solid 5px #00800000;
+        //         border-right: solid 5px #00800000;
+        //         border-bottom: solid 0px #00800000;
+        //         display: inline-block;
+        //         margin-left: 5px;
+        //         margin-bottom: 2px;
+        //     }
+        // }
+
+        // .dropdown-content {
+        //     display: none;
+        //     width: 160px;
+        //     height: 144px;
+        //     color: #000;
+        //     background-color: #fff;
+        //     margin-left: -15px;
+        //     margin-top: 15px;
+        //     padding: 0px 20px;
+        //     padding-bottom: 10px;
+        //     border-radius: 2px;
+        //     position: relative;
+        //     z-index: 10;
+        //     border-radius: 2px;
+        //     a {
+        //         display: block;
+        //         color: #000;
+        //         height: 40px;
+        //         font-size: 18px;
+        //     }
+        // }
+
+        // .dropdown:hover .dropdown-content {
+        //     display: block;
+        // }
+        .ant-menu{
+            background: none !important;
+            color: #fff;
+            line-height: 2.875rem;
+            font-size: 1rem;
+            
+        }
+        .ant-menu-submenu{
+            .ant-menu-item-only-child:hover{ 
+                background: #d61d1d;
+            }
+        }
+        .products{
+            span{
+                font-size: 14px;
+            }
+            
+        }
+    }
+
+    .connect_purse {
+        float: right;
+        height: 44px;
+        line-height: 44px;
+        margin-right: 200px;
+
+        button {
+            width: 98px;
+            height: 27px;
+            vertical-align: middle;
+            background: #FFFFFF;
+            border-radius: 13px;
+
+            span {
+                display: block;
+                margin-top: -6px;
+                color: #30559C;
+                font-size: 16px;
+                margin-left: -5px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .mobile_nav {
+        display: none;
+    }
+}
+
+.placard {
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    .ant-col-10{
+        text-align: center;
+        img{
+            width: 55px;
+            margin-left: 60px;
+        }
+    }
+    .ant-col-14{
+        height: 40px;
+        line-height: 40px;
+        img{
+            width: 17px;
+            margin-left: 33%;
+            float: left;
+            margin-top: 13px;
+            
+        }
+        .announcement{
+            float: left;
+            width: 50%;
+            height: 40px;
+            overflow: hidden;
+            margin-left: 10px;
+            div{
+                a{
+                    display: block;
+                }
+            }
+           
+        }
+    }
+}
+
+.c_money {
+
+    .ant-modal-body,
+    .ant-modal-content {
+        border-radius: 10px;
+    }
+    .ant-modal-header{
+        border-radius: 10px 10px 0px 0px;
+    }
+    .ant-modal-content {
+        height: 280px;
+    }
+
+    .ant-modal-title {
+        font-size: 24px;
+        font-family: Microsoft YaHei;
+        font-weight: bold;
+        color: #101010;
+    }
+
+    .ant-modal-footer {
+        display: none;
+    }
+
+    .ant-modal-body {
+        overflow: auto;
+        text-align: center;
+    }
+
+    .ant-modal-body p {
+        width: 25%;
+        float: left;
+        // margin-left: 10px;
+        cursor: pointer;
+
+        button[ant-click-animating-without-extra-node]:after {
+            border: 0 none;
+            opacity: 0;
+            animation: none 0 ease 0 1 normal;
+            outline: none;
+
+
+        }
+
+        button {
+            border: 0px;
+
+            .ant-btn:hover,
+            .ant-btn:focus,
+            .ant-btn:active,
+            ant-btn:not([disabled]):hover {
+                text-decoration: none;
+                background: #fff;
+            }
+        }
+
+        &:last-child {
+            img {
+                width: 56px;
+                margin-top: 65px;
+                height: auto;
+            }
+        }
+
+        img {
+            height: 53px;
+            margin-bottom: 26px;
+            margin-top: 26px;
+        }
+
+        p {
+            width: 100%;
+        }
+    }
+}
+
+.popover {
+    width: 361px;
+    height: 267px;
+    background: #FFFFFF;
+    text-align: center;
+
+    img {
+        width: 80%;
+    }
+
+    p {
+        text-align: center;
+
+        img {
+            width: 12%;
+            margin-top: -5px;
+        }
+    }
+
+    button {
+        width: 140px;
+        height: 35px;
+        line-height: 15px;
+        background: linear-gradient(-32deg, #31589F, #4E8BD2);
+
+        span {
+            font-size: 14px;
+            color: #fff;
+        }
+        &:hover{
+            background: linear-gradient(-32deg, #31589F, #4E8BD2);
+        }
+    }
+}
