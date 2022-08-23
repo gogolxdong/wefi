@@ -2,9 +2,9 @@
 import React, { useEffect } from 'react';
 import Header from './views/header/index.js'
 import Home from './views/index.js';
-import Nft from './views/NFT/index.js'
-import Bbq from './views/BBQ/index.js'
-import Dao from './views/DAO/index.js'
+import NFT from './views/NFT/index.js'
+import BBQ from './views/BBQ/index.js'
+import DAO from './views/DAO/index.js'
 import Footer from './views/footer/index'
 import { Routes, Route } from "react-router-dom";
 import { useWeb3React, } from '@web3-react/core'
@@ -45,9 +45,9 @@ class App extends React.Component {
         <Header></Header>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/nft" element={<Nft />} />
-          <Route path="/bbq" element={<Bbq />} />
-          <Route path="/dao" element={<Dao />} />
+          <Route path="/nft" element={<NFT />} />
+          <Route path="/bbq" element={<BBQ />} />
+          <Route path="/dao" element={<DAO />} />
         </Routes>
         <Footer></Footer>
       </div>

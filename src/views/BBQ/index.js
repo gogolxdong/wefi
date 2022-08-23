@@ -11,11 +11,45 @@ import bbqChart from '@/statics/mobile/bbq.png'
 import supportBgM from '@/statics/mobile/bg6.png'
 import linkBgM from '@/statics/mobile/bg5.png'
 import intl from 'react-intl-universal'
+import {ethers} from "ethers"
+import wefiEquityAbi from '../../abi/wefiEquity.json'
+import wefiFunctionAbi from '../../abi/wefiFunction.json'
 
-const Bbq = () => {
+const BBQ = () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    const wefiFunctionAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF"
+    const wefiEquityAddress = "0x31d0f1c5e163f9e84b15073bca90a3bf87baad88";
+    const signer = provider.getSigner();
+    // console.log(signer);
+    const wefiFunction = new ethers.Contract(wefiFunctionAddress, wefiFunctionAbi, signer)
+    const wefiEquity = new ethers.Contract(wefiEquityAddress, wefiEquityAbi, signer)
     const [count, setcount] = useState(0)
     const [imgUrl, setImgUrl] = useState(supportBg)
     const [imgUrl2, setImgUrl2] = useState(linkBg)
+    const [balance, setBalance] = useState()
+    const [currentAccount, setCurrentAccount] = useState()
+    const [chainId, setChainId] = useState()
+    const [chainname, setChainName] = useState()
+    // console.log(window.ethereum)
+
+    const onClickConnect = () => {
+        if(!window.ethereum) {
+          console.log("please install MetaMask")
+          return
+        }
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        provider.send("eth_requestAccounts", [])
+        .then((accounts)=>{
+          if(accounts.length>0) setCurrentAccount(accounts[0])
+        })
+        .catch((e)=>console.log(e))
+      }
+    const onClickDisconnect = () => {
+        console.log("onClickDisConnect")
+        setBalance(undefined)
+        setCurrentAccount(undefined)
+      }
+
     useEffect(() => {
         const width = document.documentElement.clientWidth
         const placard = document.querySelector('.placard')
@@ -37,7 +71,6 @@ const Bbq = () => {
     }
     const addFun=()=>{
         console.log(count)
-        
         setcount(count+1)
     }
     return <div>
@@ -47,7 +80,7 @@ const Bbq = () => {
                     <p>{intl.get('BBQPresale')}</p>
                     <div className="sale_img">
                         <img src={right}></img>
-                        <p>{intl.get('PresalePrice')}    xxxx USDT</p>
+                        <p>{intl.get('PresalePrice')}  xxxx USDT</p>
                     </div>
                     <p>{intl.get('SwapQty')}:
                     <Button className="cut" onClick={cutFun}>-</Button>
@@ -55,11 +88,11 @@ const Bbq = () => {
                     <Button className="add" onClick={addFun}>+</Button>
                     </p>
                     <p>{intl.get('PaymentMethod')}:<Button>USDT</Button><Button>ETH</Button></p>
-                    <Button>{intl.get('Confirm')}MINT</Button>
+                    <Button onClick={async()=>{onClickConnect()}}>{intl.get('Confirm')}MINT</Button>
                 </Col>
                 <Col span={12} className="pre_sale_right">
                     <img src={right}></img>
-                    <p>{intl.get('PresalePrice')}    xxxx USDT</p>
+                    <p>{intl.get('PresalePrice')}  xxxx USDT</p>
                 </Col>
             </Row>
         </div>
@@ -159,4 +192,4 @@ const Bbq = () => {
         </div>
     </div>
 }
-export default Bbq
+export default BBQ
