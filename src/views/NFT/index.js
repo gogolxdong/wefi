@@ -12,7 +12,7 @@ import webntf2 from '@/statics/Lark20220805-104244.png'
 
 import intl from 'react-intl-universal'
 
-const Nft = () => {
+const NFT = () => {
     const [count, setcount] = useState(0)
     const [imgUrl, setImgUrl] = useState(supportBg)
     const [imgUrl2, setImgUrl2] = useState(linkBg)
@@ -188,4 +188,4 @@ const Nft = () => {
         </div>
     </div>
 }
-export default Nft
+export default NFT
