@@ -15,7 +15,7 @@ import dfsAbi from '../../abi/dfs.json'
 import intl from 'react-intl-universal'
 import { ethers } from "ethers"
 import { BigNumber } from "@ethersproject/bignumber"
-
+import { formatUnits } from "ethers/utils"
 const NFT = () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     // const wefiFunctionAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" //MATIC
@@ -129,7 +129,7 @@ const NFT = () => {
                             }
                             const price = await wefiEquity.getPrice()
                             console.log("price:",price.toString())
-                            await wefiEquity.casting({value: price})
+                            await wefiEquity.casting({value: formatUnits(price,"ether")})
 
                         } else {
                             const allowance = await dfs.allowance(address, wefiFunctionAddress)
@@ -141,7 +141,7 @@ const NFT = () => {
                             }
                             const price = await wefiFunction.getPrice()
                             console.log("price:",price.toString())
-                            await wefiFunction.casting({value: price})
+                            await wefiFunction.casting({value: formatUnits(price,"ether")})
 
                         }
                     }}>{intl.get('Confirm')}MINT</Button>
