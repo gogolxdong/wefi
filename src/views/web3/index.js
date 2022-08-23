@@ -1,6 +1,6 @@
 import web3 from '@/statics/web3.png'
-import webntf1 from '@/statics/Lark20220805-104317.png'
-import webntf2 from '@/statics/Lark20220805-104244.png'
+import equityNFT from '@/statics/equity.png'
+import functionNFT from '@/statics/function.png'
 import DAO from '@/statics/DAO.png'
 import bbq from '@/statics/bbq.png'
 import route1 from '@/statics/route1.png'
@@ -56,8 +56,8 @@ const Web3 = () => {
         <div className="webNFT">
             <p>WeFi NFT</p>
             <p>{intl.get('ntfI')}</p>
-            <img src={webntf1}></img>
-            <img src={webntf2}></img>
+            <img src={equityNFT}></img>
+            <img src={functionNFT}></img>
             <Button onClick={()=>{
                 window.location.href = '/nft'
             }}>{intl.get('Details')}</Button>

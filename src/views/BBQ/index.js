@@ -12,17 +12,10 @@ import supportBgM from '@/statics/mobile/bg6.png'
 import linkBgM from '@/statics/mobile/bg5.png'
 import intl from 'react-intl-universal'
 import {ethers} from "ethers"
-import wefiEquityAbi from '../../abi/wefiEquity.json'
-import wefiFunctionAbi from '../../abi/wefiFunction.json'
+
 
 const BBQ = () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
-    const wefiFunctionAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF"
-    const wefiEquityAddress = "0x31d0f1c5e163f9e84b15073bca90a3bf87baad88";
-    const signer = provider.getSigner();
-    // console.log(signer);
-    const wefiFunction = new ethers.Contract(wefiFunctionAddress, wefiFunctionAbi, signer)
-    const wefiEquity = new ethers.Contract(wefiEquityAddress, wefiEquityAbi, signer)
+
     const [count, setcount] = useState(0)
     const [imgUrl, setImgUrl] = useState(supportBg)
     const [imgUrl2, setImgUrl2] = useState(linkBg)
@@ -30,6 +23,7 @@ const BBQ = () => {
     const [currentAccount, setCurrentAccount] = useState()
     const [chainId, setChainId] = useState()
     const [chainname, setChainName] = useState()
+    const [token, setToken] = useState()
     // console.log(window.ethereum)
 
     const onClickConnect = () => {
@@ -46,7 +40,6 @@ const BBQ = () => {
       }
     const onClickDisconnect = () => {
         console.log("onClickDisConnect")
-        setBalance(undefined)
         setCurrentAccount(undefined)
       }
 
@@ -82,17 +75,17 @@ const BBQ = () => {
                         <img src={right}></img>
                         <p>{intl.get('PresalePrice')}  xxxx USDT</p>
                     </div>
-                    <p>{intl.get('SwapQty')}:
+                    <p>{intl.get('MintQty')}:
                     <Button className="cut" onClick={cutFun}>-</Button>
                     {count}
                     <Button className="add" onClick={addFun}>+</Button>
                     </p>
-                    <p>{intl.get('PaymentMethod')}:<Button>USDT</Button><Button>ETH</Button></p>
-                    <Button onClick={async()=>{onClickConnect()}}>{intl.get('Confirm')}MINT</Button>
+                    <p>{intl.get('PaymentMethod')}:<Button onClick={setToken("USDT")}>USDT</Button><Button onClick={setToken("ETH")}>ETH</Button></p>
+                    <Button onClick={setToken("USDT")}>{intl.get('Confirm')}MINT</Button>
                 </Col>
                 <Col span={12} className="pre_sale_right">
                     <img src={right}></img>
-                    <p>{intl.get('PresalePrice')}  xxxx USDT</p>
+                    <p>{intl.get('PresalePrice')} xxxx USDT</p>
                 </Col>
             </Row>
         </div>
