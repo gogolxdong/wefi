@@ -194,6 +194,9 @@ module.exports = function (webpackEnv) {
   };
 
   return {
+    externals: [{
+      xmlhttprequest:'{XMLHttpRequest:XMLHttpRequest}'
+   }],
     target: ['browserslist'],
     // Webpack noise constrained to errors and warnings
     stats: 'errors-warnings',
