@@ -438,49 +438,52 @@
     .dev_route {
         height: auto;
         padding-bottom: 50px;
-
-        .route {
+        .route-wrap {
             width: 100%;
             overflow-x: scroll;
             // -webkit-overflow-scrolling: touch;
             display: -webkit-box;
             white-space: nowrap;
             // width: 330px;
-
-            >span {
-                display: none;
+            position: relative;
+            a {
+                top: 30px;
             }
-            .route_div{
-                overflow-x: scroll;
-                // -webkit-overflow-scrolling: touch;
-                >div {
-                    // float: left;
-                    width: 100px;
-                    height: 100px;
-                    margin-left: 10px;
-                    padding: 0px;
-    
-                    p {
-                        white-space: initial;
-                        font-size: 8px;
-                        padding: 5px 5px;
-    
-                        &:first-child {
-                            font-size: 12px;
-    
-                        }
-    
-                        &:nth-child(2) {
-                            margin: 0px;
-                        }
-    
-                        img {
-                            width: 25px;
+            .route {
+                >span {
+                    display: none;
+                }
+                .route_div{
+                    overflow-x: scroll;
+                    // -webkit-overflow-scrolling: touch;
+                    >div {
+                        // float: left;
+                        width: 100px;
+                        height: 100px;
+                        margin-left: 10px;
+                        padding: 0px;
+        
+                        p {
+                            white-space: initial;
+                            font-size: 8px;
+                            padding: 5px 5px;
+        
+                            &:first-child {
+                                font-size: 12px;
+        
+                            }
+        
+                            &:nth-child(2) {
+                                margin: 0px;
+                            }
+        
+                            img {
+                                width: 25px;
+                            }
                         }
                     }
                 }
             }
-            
         }
     }
 

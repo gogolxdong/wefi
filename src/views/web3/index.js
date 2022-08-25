@@ -85,43 +85,46 @@ const Web3 = () => {
         </div>
         <div className="dev_route">
             <p>{intl.get('WeFiHistory')}</p>
-            <div className='route'>
+            <div className='route-wrap'>
                 <a onClick={floatLeft}></a>
-                <div className='route_div'>
-                    <div>
-                        <p>{intl.get('year')} <img src={route1}></img></p>
-                        <p>{intl.get('Startplanning')}</p>
-                        <p>...</p>
-                    </div>
-                    <div>
-                        <p>{intl.get('month')}<img src={route2}></img></p>
+                <div className='route'>
+                    <div className='route_div'>
+                        <div>
+                            <p>{intl.get('year')} <img src={route1}></img></p>
+                            <p>{intl.get('Startplanning')}</p>
+                            <p>...</p>
+                        </div>
+                        <div>
+                            <p>{intl.get('month')}<img src={route2}></img></p>
 
-                        <p>{intl.get('productBased')}</p>
-                        <p>...</p>
-                    </div>
-                    <div>
-                        <p>{intl.get('month2')}<img src={route3}></img></p>
-                        <p>{intl.get('Creation')}</p>
-                        <p>...</p>
-                    </div>
-                    <div>
-                        <p>2021年10月<img src={route3}></img></p>
-                        <p>上线并完成了6个月的运营测试</p>
-                        <p>...</p>
-                    </div>
-                    <div>
-                        <p>2022年3月<img src={route3}></img></p>
-                        <p>发起首轮资本融资计划</p>
-                        <p>...</p>
-                    </div>
-                    <div>
-                        <p>2022年4月<img src={route3}></img></p>
-                        <p>正式推动股权、币权融资计划</p>
-                        <p>...</p>
+                            <p>{intl.get('productBased')}</p>
+                            <p>...</p>
+                        </div>
+                        <div>
+                            <p>{intl.get('month2')}<img src={route3}></img></p>
+                            <p>{intl.get('Creation')}</p>
+                            <p>...</p>
+                        </div>
+                        <div>
+                            <p>2021年10月<img src={route3}></img></p>
+                            <p>上线并完成了6个月的运营测试</p>
+                            <p>...</p>
+                        </div>
+                        <div>
+                            <p>2022年3月<img src={route3}></img></p>
+                            <p>发起首轮资本融资计划</p>
+                            <p>...</p>
+                        </div>
+                        <div>
+                            <p>2022年4月<img src={route3}></img></p>
+                            <p>正式推动股权、币权融资计划</p>
+                            <p>...</p>
+                        </div>
                     </div>
                 </div>
                 <a onClick={floatRight}></a>
             </div>
+
         </div>
         <div className="future_plan">
             <p>{intl.get('FuturePlans')}</p>

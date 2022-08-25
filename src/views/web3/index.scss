@@ -100,10 +100,7 @@
     height: 650px;
     text-align: center;
     margin: 0 auto;
-
-    .route {
-        overflow: auto;
-        text-align: center;
+    .route-wrap {
         position: relative;
         font-size: 16px;
         width: 1211px;
@@ -113,13 +110,14 @@
             &:first-child {
                 background-image: url(./../../statics/left.png);
                 background-repeat: no-repeat;
+                background-position: center;
                 left: 0;
             }
 
             &:last-child {
                 background-image: url(./../../statics/right.png);
                 background-repeat: no-repeat;
-                background-position-x: 10px;
+                background-position: center;
                 right: 0;
             }
 
@@ -131,50 +129,54 @@
             z-index: 10;
 
         }
-        .route_div{
-            width: 3000px;
-            margin: 0;
-            margin-left: 0px;
-            text-align: left;
-            div {
-                display: inline-block;
-                width: 341px;
-                height: 289px;
-                background: #FFFFFF;
-                border: 1px solid #E1E1E1;
-                border-radius: 2px;
-                margin-left: 47px;
+        .route {
+            width: calc(100% - 80px);
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            .route_div{
+                width: 3000px;
+                margin: 0;
+                margin-left: 0px;
                 text-align: left;
-                padding: 32px;
-                overflow: auto;
-    
-                p {
-                    &:nth-child(2) {
-                        width: 100%;
-                        margin-top: 50px;
-                        margin-bottom: 50px;
+                div {
+                    display: inline-block;
+                    width: 341px;
+                    height: 289px;
+                    background: #FFFFFF;
+                    border: 1px solid #E1E1E1;
+                    border-radius: 2px;
+                    margin: 0 20px;
+                    text-align: left;
+                    padding: 32px;
+                    overflow: auto;
+        
+                    p {
+                        &:nth-child(2) {
+                            width: 100%;
+                            margin-top: 50px;
+                            margin-bottom: 50px;
+                        }
+        
+                        &:last-child {
+                            position: absolute;
+                            bottom: 10px;
+                        }
+        
+                        &:first-child {
+                            font-size: 26px;
+                        }
+        
+                        img {
+                            width: 58px;
+                            float: right;
+                        }
+        
                     }
-    
-                    &:last-child {
-                        position: absolute;
-                        bottom: 10px;
-                    }
-    
-                    &:first-child {
-                        font-size: 26px;
-                    }
-    
-                    img {
-                        width: 58px;
-                        float: right;
-                    }
-    
                 }
             }
         }
-        }
-
-        
+    }
 }
 
 .future_plan {
