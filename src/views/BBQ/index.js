@@ -1,15 +1,15 @@
 import { Row, Col, Switch, Button } from "antd"
 import { useEffect, useState } from "react"
-import right from '@/statics/bbq/bbq.png'
+import right from './../../statics/bbq/bbq.png'
 import './index.scss'
-import supportBg from '@/statics/nft/bg4.png'
-import linkBg from '@/statics/nft/bg5.png'
-import icon1 from '@/statics/nft/icon1.png'
-import icon2 from '@/statics/nft/icon2.png'
-import icon3 from '@/statics/nft/icon3.png'
-import bbqChart from '@/statics/mobile/bbq.png'
-import supportBgM from '@/statics/mobile/bg6.png'
-import linkBgM from '@/statics/mobile/bg5.png'
+import supportBg from './../../statics/nft/bg4.png'
+import linkBg from './../../statics/nft/bg5.png'
+import icon1 from './../../statics/nft/icon1.png'
+import icon2 from './../../statics/nft/icon2.png'
+import icon3 from './../../statics/nft/icon3.png'
+import bbqChart from './../../statics/mobile/bbq.png'
+import supportBgM from './../../statics/mobile/bg6.png'
+import linkBgM from './../../statics/mobile/bg5.png'
 import intl from 'react-intl-universal'
 import {ethers} from "ethers"
 
@@ -25,23 +25,6 @@ const BBQ = () => {
     const [chainname, setChainName] = useState()
     const [token, setToken] = useState()
     // console.log(window.ethereum)
-
-    const onClickConnect = () => {
-        if(!window.ethereum) {
-          console.log("please install MetaMask")
-          return
-        }
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
-        provider.send("eth_requestAccounts", [])
-        .then((accounts)=>{
-          if(accounts.length>0) setCurrentAccount(accounts[0])
-        })
-        .catch((e)=>console.log(e))
-      }
-    const onClickDisconnect = () => {
-        console.log("onClickDisConnect")
-        setCurrentAccount(undefined)
-      }
 
     useEffect(() => {
         const width = document.documentElement.clientWidth
@@ -60,7 +43,6 @@ const BBQ = () => {
         if(count>0){
             setcount(count-1)
         }
-        
     }
     const addFun=()=>{
         console.log(count)
@@ -73,7 +55,7 @@ const BBQ = () => {
                     <p>{intl.get('BBQPresale')}</p>
                     <div className="sale_img">
                         <img src={right}></img>
-                        <p>{intl.get('PresalePrice')}  xxxx USDT</p>
+                        <p>{intl.get('PresalePrice')} xxxx USDT</p>
                     </div>
                     <p>{intl.get('MintQty')}:
                     <Button className="cut" onClick={cutFun}>-</Button>

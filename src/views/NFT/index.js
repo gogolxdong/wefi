@@ -1,33 +1,34 @@
 import { Row, Col, Switch, Button } from "antd"
 import { useEffect, useState } from "react"
 import './index.scss'
-import right from '@/statics/nft/right.png'
-import devBg from '@/statics/nft/bg3.png'
-import supportBg from '@/statics/nft/bg4.png'
-import linkBg from '@/statics/nft/bg5.png'
-import supportBgM from '@/statics/mobile/bg6.png'
-import linkBgM from '@/statics/mobile/bg5.png'
-import equityNFT from '@/statics/equity.png'
-import functionNFT from '@/statics/function.png'
+import right from './../../statics/nft/right.png'
+import devBg from './../../statics/nft/bg3.png'
+import supportBg from './../../statics/nft/bg4.png'
+import linkBg from './../../statics/nft/bg5.png'
+import supportBgM from './../../statics/mobile/bg6.png'
+import linkBgM from './../../statics/mobile/bg5.png'
+import equityNFT from './../../statics/equity.png'
+import functionNFT from './../../statics/function.png'
 import wefiEquityAbi from '../../abi/wefiEquity.json'
 import wefiFunctionAbi from '../../abi/wefiFunction.json'
-import dfsAbi from '../../abi/dfs.json'
+import usdtAbi from '../../abi/usdt.json'
 import intl from 'react-intl-universal'
 import { ethers } from "ethers"
 import { BigNumber } from "@ethersproject/bignumber"
-import { formatUnits } from "ethers/utils"
+import { useWeb3Context } from "web3"
 
 const NFT = () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
+  let { connect, provider, hasCachedProvider, chainID, connected } = useWeb3Context();
+    
     // const wefiFunctionAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" //MATIC
     // const wefiEquityAddress = "0x31d0f1c5e163f9e84b15073bca90a3bf87baad88" //MATIC
     const wefiFunctionAddress = "0x4D590160C50f58fC01EDC2ed1440CDF9FFD41D63" 
     const wefiEquityAddress = "0x56890896501540344098376B431Bd2e29dbe1118" 
-    const dfsAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" // bsc testnet
+    const usdtAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" // bsc testnet
     const signer = provider.getSigner()
     const wefiFunction = new ethers.Contract(wefiFunctionAddress, wefiFunctionAbi, signer)
     const wefiEquity = new ethers.Contract(wefiEquityAddress, wefiEquityAbi, signer)
-    const dfs = new ethers.Contract(dfsAddress, dfsAbi, signer)
+    const dfs = new ethers.Contract(usdtAddress, usdtAbi, signer)
     const [count, setcount] = useState(0)
     const [imgUrl, setImgUrl] = useState(supportBg)
     const [imgUrl2, setImgUrl2] = useState(linkBg)
@@ -129,8 +130,8 @@ const NFT = () => {
                                await receipt.wait()
                             }
                             const price = await wefiEquity.getPrice()
-                            console.log("price:",price.toString())
-                            await wefiEquity.casting({value: formatUnits(price,"ether")})
+                            console.log("price:",ethers.utils.formatUnits(price,"ether"))
+                            await wefiEquity.casting({value: ethers.utils.formatUnits(price,"ether")})
 
                         } else {
                             const allowance = await dfs.allowance(address, wefiFunctionAddress)
@@ -141,8 +142,8 @@ const NFT = () => {
 
                             }
                             const price = await wefiFunction.getPrice()
-                            console.log("price:",price.toString())
-                            await wefiFunction.casting({value: formatUnits(price,"ether")})
+                            console.log("price:",ethers.utils.formatUnits(price,"ether"))
+                            await wefiFunction.casting({value: ethers.utils.formatUnits(price,"ether")})
 
                         }
                     }}>{intl.get('Confirm')}MINT</Button>
