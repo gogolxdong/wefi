@@ -1,12 +1,12 @@
-import web3 from '@/statics/web3.png'
-import equityNFT from '@/statics/equity.png'
-import functionNFT from '@/statics/function.png'
-import DAO from '@/statics/DAO.png'
-import bbq from '@/statics/bbq.png'
-import route1 from '@/statics/route1.png'
-import route2 from '@/statics/route2.png'
-import route3 from '@/statics/route3.png'
-import DAOM from '@/statics/mobile/dao.png'
+import web3 from './../../statics/web3.png'
+import equityNFT from './../../statics/equity.png'
+import functionNFT from './../../statics/function.png'
+import DAO from './../../statics/DAO.png'
+import bbq from './../../statics/bbq.png'
+import route1 from './../../statics/route1.png'
+import route2 from './../../statics/route2.png'
+import route3 from './../../statics/route3.png'
+import DAOM from './../../statics/mobile/dao.png'
 import './index.scss'
 import { Button, Row, Col } from 'antd'
 import intl from 'react-intl-universal'
@@ -44,8 +44,6 @@ const Web3 = () => {
         }else{
 
         }
-       
-       
     }
     return <div>
         <div className="webI">

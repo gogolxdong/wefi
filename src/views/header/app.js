@@ -3,10 +3,10 @@ import { Spinner } from './../constants/Spinner'
 import { injected } from './../constants/index'
 import { Web3ReactProvider, useWeb3React, } from '@web3-react/core'
 import { useEagerConnect, useInactiveListener } from './../constants/hooks'
+import { useWeb3Context } from 'web3'
 
 function ConnectChain(props) {
-    const context = useWeb3React()
-    const { connector, library, chainId, account, activate, deactivate, active, error } = context
+    const { connector, library, chainId, account, activate, deactivate, active, error } = useWeb3Context()
 
     const [activatingConnector, setActivatingConnector] = React.useState()
     React.useEffect(() => {

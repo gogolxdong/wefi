@@ -1,6 +1,6 @@
 import { Button } from 'antd'
 import './index.scss'
-import appLogo from '@/statics/applogo.png'
+import appLogo from './../../statics/applogo.png'
 import intl from 'react-intl-universal'
 
 const Download = () => {

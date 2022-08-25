@@ -1,5 +1,5 @@
 import './index.scss'
-import daoicon from '@/statics/daoicon.png'
+import daoicon from './../../statics/daoicon.png'
 import intl from 'react-intl-universal'
 import { useEffect, useState } from "react"
 const DAO = () => {
