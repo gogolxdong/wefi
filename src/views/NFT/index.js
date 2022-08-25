@@ -16,13 +16,14 @@ import intl from 'react-intl-universal'
 import { ethers } from "ethers"
 import { BigNumber } from "@ethersproject/bignumber"
 import { formatUnits } from "ethers/utils"
+
 const NFT = () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     // const wefiFunctionAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" //MATIC
     // const wefiEquityAddress = "0x31d0f1c5e163f9e84b15073bca90a3bf87baad88" //MATIC
     const wefiFunctionAddress = "0x4D590160C50f58fC01EDC2ed1440CDF9FFD41D63" 
     const wefiEquityAddress = "0x56890896501540344098376B431Bd2e29dbe1118" 
-    const dfsAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF"
+    const dfsAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" // bsc testnet
     const signer = provider.getSigner()
     const wefiFunction = new ethers.Contract(wefiFunctionAddress, wefiFunctionAbi, signer)
     const wefiEquity = new ethers.Contract(wefiEquityAddress, wefiEquityAbi, signer)

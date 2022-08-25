@@ -3,5 +3,5 @@ node_modules
 .DS_Store
 .eslintcache
 main
-build
 yarn.lock
+build/
