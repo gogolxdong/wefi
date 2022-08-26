@@ -11,83 +11,79 @@ import bbqChart from './../../statics/mobile/bbq.png'
 import supportBgM from './../../statics/mobile/bg6.png'
 import linkBgM from './../../statics/mobile/bg5.png'
 import { useTranslation } from './../../contexts/Localization'
+import { ethers } from "ethers"
+import { BigNumber } from "@ethersproject/bignumber"
+import usdtAbi from '../../abi/usdt.json'
 
-
-const BBQ = () => {
+const BBQ = ({ props }) => {
     const { t } = useTranslation()
+    let { connect, provider, hasCachedProvider, chainID, connected, address } = props;
+    console.log("address:", address)
     const [count, setcount] = useState(0)
     const [imgUrl, setImgUrl] = useState(supportBg)
     const [imgUrl2, setImgUrl2] = useState(linkBg)
-    const [balance, setBalance] = useState()
-    const [currentAccount, setCurrentAccount] = useState()
-    const [chainId, setChainId] = useState()
-    const [chainname, setChainName] = useState()
     const [token, setToken] = useState()
-    // console.log(window.ethereum)
+    const bbqAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" // bsc testnet
+    const signer = provider.getSigner()
+    const bbq = new ethers.Contract(bbqAddress, usdtAbi, signer)
 
-    useEffect(() => {
-        const width = document.documentElement.clientWidth
-        const placard = document.querySelector('.placard')
-        if (width <= 415) {
-            setImgUrl(supportBgM)
-            setImgUrl2(linkBgM)
-            placard.style.display = 'none'
-        } else {
-            setImgUrl(supportBg)
-            setImgUrl2(linkBg)
-            placard.style.display = 'block'
-        }
-    }, [imgUrl])
-    const cutFun = () => {
-        if (count > 0) {
-            setcount(count - 1)
-        }
-    }
-    const addFun = () => {
-        console.log(count)
-        setcount(count + 1)
-    }
+    // useEffect(() => {
+    //     const width = document.documentElement.clientWidth
+    //     const placard = document.querySelector('.placard')
+    //     if (width <= 415) {
+    //         setImgUrl(supportBgM)
+    //         setImgUrl2(linkBgM)
+    //         placard.style.display = 'none'
+    //     } else {
+    //         setImgUrl(supportBg)
+    //         setImgUrl2(linkBg)
+    //         placard.style.display = 'block'
+    //     }
+    // }, [imgUrl])
     return <div>
         <div className="bbq_pre_sale">
             <Row>
                 <Col span={12} className="pre_sale_left">
-                    <p>{'BBQPresale'}</p>
+                    <p>{t('BBQPresale')}</p>
                     <div className="sale_img">
                         <img src={right}></img>
-                        <p>{'PresalePrice'} xxxx USDT</p>
+                        <p>{t('PresalePrice')} xxxx USDT</p>
                     </div>
-                    <p>{'MintQty'}:
-                        <Button className="cut" onClick={cutFun}>-</Button>
+                    <p>{t('MintQty')}:
+                        <Button className="cut" onClick={() => { if (count > 0) setcount(count - 1) }}>-</Button>
                         {count}
-                        <Button className="add" onClick={addFun}>+</Button>
+                        <Button className="add" onClick={() => setcount(count + 1)}>+</Button>
                     </p>
-                    <p>{'PaymentMethod'}:<Button onClick={setToken("USDT")}>USDT</Button><Button onClick={setToken("ETH")}>ETH</Button></p>
-                    <Button onClick={setToken("USDT")}>{'Confirm'}MINT</Button>
+                    <p>{t('PaymentMethod:')}
+                        <Button onClick={()=>{setToken("USDT")}}>USDT</Button>
+                        <Button onClick={()=>{setToken("ETH")}}>ETH</Button>
+                    </p>
+                    <Button onClick={async () => { await bbq.balanceOf(address) }}>{t('Confirm')}MINT</Button>
                 </Col>
                 <Col span={12} className="pre_sale_right">
                     <img src={right}></img>
-                    <p>{'PresalePrice'} xxxx USDT</p>
+                    <p>{t('PresalePrice')} xxxx USDT</p>
                 </Col>
             </Row>
         </div>
         <div className="bbq_int">
-            <p>{'BBQIntroduction'}</p>
-            <p>{'BBQI'}</p>
+            <p>{t('BBQIntroduction')}</p>
+            <p>{t('BBQI')}</p>
         </div>
         <div className="bbq_dis">
-            <p>{'BBQDistribution'}</p>
+            <p>{t('BBQDistribution')}</p>
             <div>
                 <img src={bbqChart}></img>
                 <p>
-                    <span>{'Team'}：</span>10%，分24个月释放，每月释放，
-                    <span>{'SocialMining'} ：</span>47%，
-                    <span>{'Advisors'}：</span>5%，
-                    <span>{'Market'}：</span>5%，
+                    <span>{t('Team')}：</span>10%，分24个月释放，每月释放，
+                    <span>{t('SocialMining')} ：</span>47%，
+                    <span>{t('Advisors')}：</span>5%，
+                    <span>{t('Market')}：</span>5%，
                     <span>IDO：</span>20%，
-                    <span>{'InstitutionalI'}：</span>10%，
-                    <span>{'Airdrop'}：</span>3%
+                    <span>{t('InstitutionalI')}：</span>10%，
+                    <span>{t('Airdrop')}：</span>3%
                 </p>
-                <div>{'Note'}</div>
+                <div>{t('Note')}</div>
             </div>
             <div>
                 <p>BBQ</p>
@@ -95,73 +91,73 @@ const BBQ = () => {
                 <div className="chart">
                     <div>
                         <span></span>
-                        <p><span>10%</span><span>{'Team'}</span></p>
+                        <p><span>10%</span><span>{t('Team')}</span></p>
                     </div>
                     <div>
                         <span></span>
-                        <p><span>33%</span><span>{'SocialMining'}
+                        <p><span>33%</span><span>{t('SocialMining')}
                             <br /></span></p>
                     </div>
                     <div>
                         <span></span>
-                        <p><span>20%</span><span>{'Advisors'}</span></p>
+                        <p><span>20%</span><span>{t('Advisors')}</span></p>
                     </div>
                     <div>
                         <span></span>
-                        <p><span>10%</span><span>{'Market'}</span></p>
+                        <p><span>10%</span><span>{t('Market')}</span></p>
                     </div>
                     <div>
                         <span></span>
                         <p><span>10%</span>
                             <span>
-                                {'Marketing'}
+                                {t('Marketing')}
                             </span>
-                            <span>{'Marketing2'}</span>
+                            <span>{t('Marketing2')}</span>
                         </p>
                     </div>
                     <div>
                         <span></span>
-                        <p><span>7%</span><span>{'InstitutionalI'}</span></p>
+                        <p><span>7%</span><span>{t('InstitutionalI')}</span></p>
                         <p><span>10%</span>
                             <span>
-                                {'Airdrop'}<br />
-                                {'Airdrop2'}
+                                {t('Airdrop')}<br />
+                                {t('Airdrop2')}
                             </span></p>
                     </div>
                 </div>
-                <div>{'Note'}</div>
+                <div>{t('Note')}</div>
             </div>
         </div>
         <div className="bbq_rai">
-            <p>{'BBQBenefits'}</p>
-            <p><span>1</span><span>{'Contributionmining'}</span></p>
-            <p><span>2</span><span>{'transfers'}</span></p>
-            <p><span>3</span><span>{'Consumption'}</span></p>
+            <p>{t('BBQBenefits')}</p>
+            <p><span>1</span><span>{t('Contributionmining')}</span></p>
+            <p><span>2</span><span>{t('transfers')}</span></p>
+            <p><span>3</span><span>{t('Consumption')}</span></p>
         </div>
         <div className="bbq_deflation">
-            <p>{'AggressiveD'}</p>
+            <p>{t('AggressiveD')}</p>
             <div>
                 <p>
                     <img src={icon1}></img>
-                    <p>{'Transactionburns'}</p>
+                    <p>{t('Transactionburns')}</p>
                 </p>
                 <p>
                     <img src={icon2}></img>
-                    <p>{"buybackAburn"}</p>
+                    <p>{t("buybackAburn")}</p>
                 </p>
                 <p>
                     <img src={icon3}></img>
-                    <p>{'ConsumptionAburn'}</p>
+                    <p>{t('ConsumptionAburn')}</p>
                 </p>
             </div>
 
         </div>
         <div className="support_org" style={{ display: "none" }}>
-            <p>{'nvestmentInstitutions'}</p>
+            <p>{t('nvestmentInstitutions')}</p>
             <img src={imgUrl}></img>
         </div>
         <div className="link_about" style={{ display: "none" }}>
-            <p>{'ReferenceLinks'}</p>
+            <p>{t('ReferenceLinks')}</p>
             <img src={imgUrl2}></img>
         </div>
     </div>

@@ -15,6 +15,7 @@ import iosapp from './../../statics/download.png'
 import ios from './../../statics/ios.png'
 import android from './../../statics/android.png'
 import { useTranslation } from './../../contexts/Localization'
+
 const Footer = () => { 
     const { t } = useTranslation()
     const content = (
@@ -40,7 +41,7 @@ const Footer = () => {
         }, 200);
     }
     return <div>
-        <div className="app_download">
+        <div className="app_download" id="app_download">
             <Row>
                 <Col span={14} className="app_left" id="appLeft">
                 <Popover content={content} overlayClassName="mobile_popover">

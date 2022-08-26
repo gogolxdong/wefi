@@ -12,6 +12,7 @@ import { Button, Row, Col } from 'antd'
 import intl from 'react-intl-universal'
 import { useEffect, useState } from 'react'
 import { useTranslation } from './../../contexts/Localization'
+
 const Web3 = () => {
     const { t } = useTranslation()
     const [index,setIndex] = useState(1)
