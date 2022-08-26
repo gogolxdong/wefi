@@ -153,7 +153,7 @@ const Header = ({ props }) => {
     ]
     const items2 = [
         {
-            label: (<span className="product">{!currentLanguage.locale ? t("Language") : currentLanguage.language}<CaretDownOutlined /></span>),
+            label: (<span className="product">{!currentLanguage?.locale ? t("Language") : currentLanguage?.language}<CaretDownOutlined /></span>),
             key: 'items',
             children: languageList.map((lang) => {
                 return { label: <a href="#" onClick={() => { setLanguage(lang) }}>{lang.language}</a>, key: lang.locale }
@@ -190,7 +190,7 @@ const Header = ({ props }) => {
         }, 5000)
         const width = document
 
-        fetch(`https://wefi.space/home-web/index/getAffiche?language=${currentLanguage.locale}`).then((res) => {
+        fetch(`https://wefi.space/home-web/index/getAffiche?language=${currentLanguage?.locale}`).then((res) => {
             res.json().then((response) => {
                 if (response.code == 1) {
                     setannouncementList(response.data || [])
