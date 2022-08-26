@@ -133,8 +133,8 @@ const Header = ({ props }) => {
         setModalVisible(true)
     }
     const scrollToBottom = () => {
-        // const t = document.querySelector('.App')?.offsetHeight
-        // window.scroll({ top: t, left: 0, behavior: 'smooth' })
+        const element = document.getElementById('app_download')
+        element.scrollIntoView({ behavior: 'smooth' })
     }
     const items = [
         { label: (<a href="/">{t("HOME")}</a>), key: 'item-home' },
