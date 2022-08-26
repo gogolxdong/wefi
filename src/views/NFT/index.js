@@ -20,37 +20,21 @@ const NFT = ({ props }) => {
     const { t } = useTranslation()
     let { connect, provider, hasCachedProvider, chainID, connected } = props;
 
-    // const wefiFunctionAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" //MATIC
-    // const wefiEquityAddress = "0x31d0f1c5e163f9e84b15073bca90a3bf87baad88" //MATIC
-    const wefiFunctionAddress = "0x4D590160C50f58fC01EDC2ed1440CDF9FFD41D63"
-    const wefiEquityAddress = "0x56890896501540344098376B431Bd2e29dbe1118"
-    const usdtAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" // bsc testnet
+    const wefiFunctionAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" //MATIC
+    const wefiEquityAddress = "0x31d0f1c5e163f9e84b15073bca90a3bf87baad88" //MATIC
+    // const wefiFunctionAddress = "0x4D590160C50f58fC01EDC2ed1440CDF9FFD41D63"
+    // const wefiEquityAddress = "0x56890896501540344098376B431Bd2e29dbe1118"
+    // const usdtAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" // bsc testnet
+    const usdtAddress = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F" // polygen mainnet
     const signer = provider.getSigner()
     const wefiFunction = new ethers.Contract(wefiFunctionAddress, wefiFunctionAbi, signer)
     const wefiEquity = new ethers.Contract(wefiEquityAddress, wefiEquityAbi, signer)
     const dfs = new ethers.Contract(usdtAddress, usdtAbi, signer)
-    const [count, setcount] = useState(0)
+    const [count, setcount] = useState(1)
     const [imgUrl, setImgUrl] = useState(supportBg)
     const [imgUrl2, setImgUrl2] = useState(linkBg)
     const [wefiImg, setwefiImg] = useState(functionNFT)
     const [currentAccount, setCurrentAccount] = useState()
-
-    const onClickConnect = () => {
-        if (!window.ethereum) {
-            console.log("please install MetaMask")
-            return
-        }
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
-        provider.send("eth_requestAccounts", [])
-            .then((accounts) => {
-                if (accounts.length > 0) setCurrentAccount(accounts[0])
-            })
-            .catch((e) => console.log(e))
-    }
-    const onClickDisconnect = () => {
-        console.log("onClickDisConnect")
-        setCurrentAccount(undefined)
-    }
 
     useEffect(() => {
         document.querySelector(".ant-switch-handle").innerHTML = t('equity') + 'NFT'
@@ -85,17 +69,6 @@ const NFT = ({ props }) => {
 
     }
 
-    const cutFun = () => {
-        if (count > 0) {
-            setcount(count - 1)
-        }
-
-    }
-    const addFun = () => {
-        console.log(count)
-
-        setcount(count + 1)
-    }
     return <div>
         <div className="pre_sale">
             <Row>
@@ -114,9 +87,13 @@ const NFT = ({ props }) => {
                             onChange={switchChange} id="nft" />
                     </p>
                     <p><span>{t('Mintable')}:</span>
-                        <Button className="cut" onClick={cutFun}>-</Button>
+                        <Button className="cut" onClick={() => {
+                            if (count > 0) {
+                                setcount(count - 1)
+                            }
+                        }}>-</Button>
                         {count}
-                        <Button className="add" onClick={addFun}>+</Button></p>
+                        <Button className="add" onClick={() => { setcount(count + 1) }}>+</Button></p>
                     <p>{t('PaymentMethod')}:<Button>USDT</Button><Button>ETH</Button></p>
                     <Button onClick={async () => {
                         const address = await signer.getAddress()
@@ -124,26 +101,26 @@ const NFT = ({ props }) => {
 
                         if (wefiImg == equityNFT) {
                             const allowance = await dfs.allowance(address, wefiEquityAddress)
-                            console.log("allowance:", allowance)
+                            console.log("wefiEquity allowance:", allowance)
                             if (allowance.eq(zero)) {
                                 const receipt = await dfs.approve(wefiEquityAddress, BigNumber.from(2).pow(255))
                                 await receipt.wait()
                             }
                             const price = await wefiEquity.getPrice()
-                            console.log("price:", ethers.utils.formatUnits(price, "ether"))
-                            await wefiEquity.casting({ value: ethers.utils.formatUnits(price, "ether") })
+                            console.log("wefiEquity price:", ethers.utils.formatUnits(BigNumber.from(price).mul(count), "ether"))
+                            await wefiEquity.casting({ value: BigNumber.from(price).mul(count) })
 
                         } else {
                             const allowance = await dfs.allowance(address, wefiFunctionAddress)
-                            console.log("allowance:", allowance)
+                            console.log("wefiFunction allowance:", allowance)
                             if (allowance.eq(zero)) {
                                 const receipt = await dfs.approve(wefiFunctionAddress, BigNumber.from(2).pow(255))
                                 await receipt.wait()
 
                             }
                             const price = await wefiFunction.getPrice()
-                            console.log("price:", ethers.utils.formatUnits(price, "ether"))
-                            await wefiFunction.casting({ value: ethers.utils.formatUnits(price, "ether") })
+                            console.log("wefiFunction price:", ethers.utils.formatUnits(BigNumber.from(price).mul(count), "ether"))
+                            await wefiFunction.casting({ value: BigNumber.from(price).mul(count) })
 
                         }
                     }}>{t('Confirm')}MINT</Button>
