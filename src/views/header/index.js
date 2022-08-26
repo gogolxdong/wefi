@@ -22,6 +22,9 @@ import { DEFAULT_NETWORK } from './../../constants'
 import { useWeb3Context } from "./../../hooks/web3"
 import useMatchBreakpoints from "./../../hooks/useMatchBreakpoints"
 import { useLocation } from "react-router-dom";
+import { useTranslation } from './../../contexts/Localization'
+import { languageList } from 'config/localization/languages'
+
 
 const { Option } = Select
 export const shorten = (str) => {
@@ -30,6 +33,7 @@ export const shorten = (str) => {
 }
 
 function ConnectMenu() {
+    const { t } = useTranslation()
     const { connect, disconnect, connected, web3, providerChainID, checkWrongNetwork, address, web3Modal, mobile } = useWeb3Context()
     const [isConnected, setConnected] = useState(connected)
 
@@ -37,7 +41,7 @@ function ConnectMenu() {
         return state.pendingTransactions
     })
 
-    let buttonText = intl.get("Connect Wallet")
+    let buttonText = t("Connect Wallet")
     let clickFunc = connect
     let buttonStyle = {}
 
@@ -45,7 +49,7 @@ function ConnectMenu() {
         if (mobile) {
             buttonText = shorten(address)
         } else {
-            buttonText = intl.get("Disconnect")
+            buttonText = t("Disconnect")
             clickFunc = disconnect
         }
     }
@@ -56,7 +60,7 @@ function ConnectMenu() {
     }
 
     if (isConnected && providerChainID !== DEFAULT_NETWORK) {
-        buttonText = intl.get("Wrong network")
+        buttonText = t("Wrong network")
         buttonStyle = { backgroundColor: "rgb(255, 67, 67)" }
         clickFunc = () => {
             checkWrongNetwork()
@@ -74,8 +78,10 @@ function ConnectMenu() {
     )
 }
 
-const Header = ({props}) => {
-    console.log("props:",props)
+const Header = ({ props }) => {
+    const { currentLanguage, setLanguage, t } = useTranslation()
+
+    // console.log("props:", props)
     const useQuery = () => new URLSearchParams(useLocation().search)
     const query = useQuery()
     const { isMobile } = useMatchBreakpoints()
@@ -84,16 +90,13 @@ const Header = ({props}) => {
     const triedEager = useEagerConnect()
     const [modalVisible, setModalVisible] = useState(false)
     const [activatingConnector, setActivatingConnector] = React.useState()
-    const [locale, setLocale] = useState()
+    // const [locale, setLocale] = useState()
     const [mode, setmode] = useState('horizontal')
     const [show, setshow] = useState(true)
     const [announcementLists, setannouncementList] = useState([])
     // const [index,setindex] = useState(0)
 
     useEffect(() => {
-        // if (activatingConnector && activatingConnector === connector) {
-        //     setActivatingConnector(undefined)
-        // }
         getAnnouncement()
         window.addEventListener('scroll', function () {
             let t = document.documentElement.scrollTop
@@ -103,19 +106,19 @@ const Header = ({props}) => {
                 document.querySelector('.top_nav').classList.remove('box-active')
             }
         })
-    }, [activatingConnector, locale])
+    }, [activatingConnector, currentLanguage])
     const content = (
         <div className="popover">
             <Row>
                 <Col span={12}>
                     <img src={iosapp}></img>
-                    <p><img src={ios}></img><span>ios</span></p>
-                    <Button>{intl.get('iosapp')}</Button>
+                    <p><img src={ios}></img><span>IOS</span></p>
+                    <Button>{t('iosapp')}</Button>
                 </Col>
                 <Col span={12}>
                     <img src={iosapp}></img>
                     <p><img src={android}></img><span>Android</span></p>
-                    <Button>{intl.get('andriodapp')}</Button>
+                    <Button>{t('andriodapp')}</Button>
                 </Col>
             </Row>
         </div>
@@ -134,42 +137,31 @@ const Header = ({props}) => {
         window.scroll({ top: t, left: 0, behavior: 'smooth' })
     }
     const items = [
-        { label: (<a href="/">{intl.get("HOME")}</a>), key: 'item-1' },
+        { label: (<a href="/">{t("HOME")}</a>), key: 'item-home' },
         {
-            label: (<span className="products">{intl.get("PRODUCTS")}<CaretDownOutlined /></span>),
+            label: (<span className="products">{t("PRODUCTS")}<CaretDownOutlined /></span>),
             key: 'item-2',
             children: [
-                { label: (<a href="/nft">WeFi NFT</a>), key: 'item-2-1' },
-                { label: (<a href="/dao">WeFi DAO</a>), key: 'item-2-2' },
-                { label: (<a href="/bbq">BBQ</a>), key: 'item-2-3' }
+                { label: (<a href="/nft">WeFi NFT</a>), key: 'item-nft' },
+                { label: (<a href="/dao">WeFi DAO</a>), key: 'item-dao' },
+                { label: (<a href="/bbq">BBQ</a>), key: 'item-bbq' }
             ]
         },
 
-        { label: (<Popover content={content}>{intl.get("DOWNLOAD")}</Popover>), key: 'item-3' },
-        { label: (<span onClick={scrollToBottom}>{intl.get("About")}</span>), key: 'item-4' },
+        { label: (<Popover content={content}>{t("DOWNLOAD")}</Popover>), key: 'item-3' },
+        { label: (<span onClick={scrollToBottom}>{t("About")}</span>), key: 'item-4' },
     ]
     const items2 = [
         {
-            label: (<span className="product">{!locale ? intl.get("Language") : locale}<CaretDownOutlined /></span>),
+            label: (<span className="product">{!currentLanguage.locale ? t("Language") : currentLanguage.language}<CaretDownOutlined /></span>),
             key: 'items',
-            children: [
-                { label: (<a href="#" onClick={() => { changeL('zh') }}>简体中文</a>), key: 'item-2-1' },
-                { label: (<a href="#" onClick={() => { changeL('hk') }}>繁体中文</a>), key: 'item-2-2' },
-                { label: (<a href="#" onClick={() => { changeL('en') }}>English</a>), key: 'item-2-3' }
-            ]
+            children: languageList.map((lang) => {
+                return { label: <a href="#" onClick={() => { setLanguage(lang) }}>{lang.language}</a>, key: lang.locale }
+            })
+
         }
     ]
-    const changeL = (val) => {
-        let lag = val == 'zh' ? '简体中文' : val == 'en' ? 'English' : '繁体中文'
-        setLocale(lag)
-        localStorage.setItem('language', val)
-        if (val == 'en') {
-            document.querySelector('#connectBtn').style.width = '10rem'
-        } else {
-            document.querySelector('#connectBtn').style.width = '6.125rem'
-        }
-        // emit.emit('change_language', val)
-    }
+
     const showMenu = (val) => {
         let menu = document.querySelector(".menu_top")
         menu.style.display = show ? 'block' : 'none'
@@ -180,9 +172,9 @@ const Header = ({props}) => {
         const aListDom = document.querySelector('.announcementList')
         const adom = document.querySelector('.announcementList').childNodes
         let first = adom[0]
-        const firstLi = first.cloneNode(true)
+        const firstLi = first?.cloneNode(true)
         setTimeout(function () {
-            adom[0].animate({
+            adom[0]?.animate({
                 marginTop: '-15px',
                 opacity: '0'
             }, 1000)
@@ -197,15 +189,17 @@ const Header = ({props}) => {
             move()
         }, 5000)
         const width = document
-        const language = window.localStorage.getItem('language') || 'zh'
-        axios.get(`https://wefi.space/home-web/index/getAffiche?language=${language}`).then((res) => {
-            if (res.status == 200) {
-                setannouncementList(res.data.data || [])
-                let index = 0
-                const timer = setInterval(() => {
-                    move()
-                }, 7000)
-            }
+
+        fetch(`https://wefi.space/home-web/index/getAffiche?language=${currentLanguage.locale}`).then((res) => {
+            res.json().then((response) => {
+                if (response.code == 1) {
+                    setannouncementList(response.data || [])
+                    const timer = setInterval(() => {
+                        move()
+                    }, 7000)
+                }
+            })
+
         })
     }
     return <div>
@@ -215,7 +209,7 @@ const Header = ({props}) => {
             </div>
             {/* <div className="lang_select">
                 <div className="dropdown">
-                    <span>{!locale ? intl.get("Language") : locale}</span>
+                    <span>{!locale ? t("Language") : locale}</span>
                     <div className="dropdown-content">
                         <a href="#" onClick={() => { changeL('zh') }}>简体中文</a>
                         <a href="#" onClick={() => { changeL('hk') }}>繁体中文</a>
@@ -228,7 +222,7 @@ const Header = ({props}) => {
             </div>
 
             <div className="connect_purse">
-                <Button onClick={showModal} id="connectBtn">{!address ? intl.get("ConnectWallet"): shorten(address)}</Button>
+                <Button onClick={showModal} id="connectBtn">{!address ? t("ConnectWallet") : shorten(address)}</Button>
                 {/* <ConnectMenu></ConnectMenu> */}
             </div>
             <div className="menu_top" >
@@ -257,7 +251,7 @@ const Header = ({props}) => {
             </Row>
         </div>
         <Modal
-            title={address? shorten(address): "ConnectWallet"}
+            title={address ? shorten(address) : "ConnectWallet"}
             cancelText={true}
             centered
             visible={modalVisible}

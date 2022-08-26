@@ -10,12 +10,11 @@ import icon3 from './../../statics/nft/icon3.png'
 import bbqChart from './../../statics/mobile/bbq.png'
 import supportBgM from './../../statics/mobile/bg6.png'
 import linkBgM from './../../statics/mobile/bg5.png'
-import intl from 'react-intl-universal'
-import {ethers} from "ethers"
+import { useTranslation } from './../../contexts/Localization'
 
 
 const BBQ = () => {
-
+    const { t } = useTranslation()
     const [count, setcount] = useState(0)
     const [imgUrl, setImgUrl] = useState(supportBg)
     const [imgUrl2, setImgUrl2] = useState(linkBg)
@@ -39,56 +38,56 @@ const BBQ = () => {
             placard.style.display = 'block'
         }
     }, [imgUrl])
-    const cutFun=()=>{
-        if(count>0){
-            setcount(count-1)
+    const cutFun = () => {
+        if (count > 0) {
+            setcount(count - 1)
         }
     }
-    const addFun=()=>{
+    const addFun = () => {
         console.log(count)
-        setcount(count+1)
+        setcount(count + 1)
     }
     return <div>
         <div className="bbq_pre_sale">
             <Row>
                 <Col span={12} className="pre_sale_left">
-                    <p>{intl.get('BBQPresale')}</p>
+                    <p>{'BBQPresale'}</p>
                     <div className="sale_img">
                         <img src={right}></img>
-                        <p>{intl.get('PresalePrice')} xxxx USDT</p>
+                        <p>{'PresalePrice'} xxxx USDT</p>
                     </div>
-                    <p>{intl.get('MintQty')}:
-                    <Button className="cut" onClick={cutFun}>-</Button>
-                    {count}
-                    <Button className="add" onClick={addFun}>+</Button>
+                    <p>{'MintQty'}:
+                        <Button className="cut" onClick={cutFun}>-</Button>
+                        {count}
+                        <Button className="add" onClick={addFun}>+</Button>
                     </p>
-                    <p>{intl.get('PaymentMethod')}:<Button onClick={setToken("USDT")}>USDT</Button><Button onClick={setToken("ETH")}>ETH</Button></p>
-                    <Button onClick={setToken("USDT")}>{intl.get('Confirm')}MINT</Button>
+                    <p>{'PaymentMethod'}:<Button onClick={setToken("USDT")}>USDT</Button><Button onClick={setToken("ETH")}>ETH</Button></p>
+                    <Button onClick={setToken("USDT")}>{'Confirm'}MINT</Button>
                 </Col>
                 <Col span={12} className="pre_sale_right">
                     <img src={right}></img>
-                    <p>{intl.get('PresalePrice')} xxxx USDT</p>
+                    <p>{'PresalePrice'} xxxx USDT</p>
                 </Col>
             </Row>
         </div>
         <div className="bbq_int">
-            <p>{intl.get('BBQIntroduction')}</p>
-            <p>{intl.get('BBQI')}</p>
+            <p>{'BBQIntroduction'}</p>
+            <p>{'BBQI'}</p>
         </div>
         <div className="bbq_dis">
-            <p>{intl.get('BBQDistribution')}</p>
+            <p>{'BBQDistribution'}</p>
             <div>
                 <img src={bbqChart}></img>
                 <p>
-                    <span>{intl.get('Team')}：</span>10%，分24个月释放，每月释放，
-                    <span>{intl.get('SocialMining')} ：</span>47%，
-                    <span>{intl.get('Advisors')}：</span>5%， 
-                    <span>{intl.get('Market')}：</span>5%， 
-                    <span>IDO：</span>20%， 
-                    <span>{intl.get('InstitutionalI')}：</span>10%，
-                    <span>{intl.get('Airdrop')}：</span>3%
+                    <span>{'Team'}：</span>10%，分24个月释放，每月释放，
+                    <span>{'SocialMining'} ：</span>47%，
+                    <span>{'Advisors'}：</span>5%，
+                    <span>{'Market'}：</span>5%，
+                    <span>IDO：</span>20%，
+                    <span>{'InstitutionalI'}：</span>10%，
+                    <span>{'Airdrop'}：</span>3%
                 </p>
-                <div>{intl.get('Note')}</div>
+                <div>{'Note'}</div>
             </div>
             <div>
                 <p>BBQ</p>
@@ -96,73 +95,73 @@ const BBQ = () => {
                 <div className="chart">
                     <div>
                         <span></span>
-                        <p><span>10%</span><span>{intl.get('Team')}</span></p>
+                        <p><span>10%</span><span>{'Team'}</span></p>
                     </div>
                     <div>
                         <span></span>
-                        <p><span>33%</span><span>{intl.get('SocialMining')}
-                        <br /></span></p>
+                        <p><span>33%</span><span>{'SocialMining'}
+                            <br /></span></p>
                     </div>
                     <div>
                         <span></span>
-                        <p><span>20%</span><span>{intl.get('Advisors')}</span></p>
+                        <p><span>20%</span><span>{'Advisors'}</span></p>
                     </div>
                     <div>
                         <span></span>
-                        <p><span>10%</span><span>{intl.get('Market')}</span></p>
+                        <p><span>10%</span><span>{'Market'}</span></p>
                     </div>
                     <div>
                         <span></span>
                         <p><span>10%</span>
-                        <span>
-                            {intl.get('Marketing')}
-                        </span>
-                        <span>{intl.get('Marketing2')}</span>
+                            <span>
+                                {'Marketing'}
+                            </span>
+                            <span>{'Marketing2'}</span>
                         </p>
                     </div>
                     <div>
                         <span></span>
-                        <p><span>7%</span><span>{intl.get('InstitutionalI')}</span></p>
+                        <p><span>7%</span><span>{'InstitutionalI'}</span></p>
                         <p><span>10%</span>
-                        <span>
-                            {intl.get('Airdrop')}<br />
-                            {intl.get('Airdrop2')}
-                        </span></p>
+                            <span>
+                                {'Airdrop'}<br />
+                                {'Airdrop2'}
+                            </span></p>
                     </div>
                 </div>
-                <div>{intl.get('Note')}</div>
+                <div>{'Note'}</div>
             </div>
         </div>
         <div className="bbq_rai">
-            <p>{intl.get('BBQBenefits')}</p>
-            <p><span>1</span><span>{intl.get('Contributionmining')}</span></p>
-            <p><span>2</span><span>{intl.get('transfers')}</span></p>
-            <p><span>3</span><span>{intl.get('Consumption')}</span></p>
+            <p>{'BBQBenefits'}</p>
+            <p><span>1</span><span>{'Contributionmining'}</span></p>
+            <p><span>2</span><span>{'transfers'}</span></p>
+            <p><span>3</span><span>{'Consumption'}</span></p>
         </div>
         <div className="bbq_deflation">
-            <p>{intl.get('AggressiveD')}</p>
+            <p>{'AggressiveD'}</p>
             <div>
                 <p>
                     <img src={icon1}></img>
-                    <p>{intl.get('Transactionburns')}</p>
+                    <p>{'Transactionburns'}</p>
                 </p>
                 <p>
                     <img src={icon2}></img>
-                    <p>{intl.get("buybackAburn")}</p>
+                    <p>{"buybackAburn"}</p>
                 </p>
                 <p>
                     <img src={icon3}></img>
-                    <p>{intl.get('ConsumptionAburn')}</p>
+                    <p>{'ConsumptionAburn'}</p>
                 </p>
             </div>
 
         </div>
-        <div className="support_org" style={{display:"none"}}>
-            <p>{intl.get('nvestmentInstitutions')}</p>
+        <div className="support_org" style={{ display: "none" }}>
+            <p>{'nvestmentInstitutions'}</p>
             <img src={imgUrl}></img>
         </div>
-        <div className="link_about"  style={{display:"none"}}>
-            <p>{intl.get('ReferenceLinks')}</p>
+        <div className="link_about" style={{ display: "none" }}>
+            <p>{'ReferenceLinks'}</p>
             <img src={imgUrl2}></img>
         </div>
     </div>

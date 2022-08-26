@@ -1,15 +1,16 @@
 import { Button } from 'antd'
 import './index.scss'
 import appLogo from './../../statics/applogo.png'
-import intl from 'react-intl-universal'
+import { useTranslation } from './../../contexts/Localization'
 
 const Download = () => {
+    const { t } = useTranslation()
     return <div>
         <div className="dow_content">
             <img src={appLogo}></img>
-            <p>{intl.get("wefiwordtop")}</p>
-            <p>{intl.get("wefiwordbottom")}</p>
-            <Button>{intl.get("wefiwordBtn")}</Button>
+            <p>{t("wefiwordtop")}</p>
+            <p>{t("wefiwordbottom")}</p>
+            <Button>{t("wefiwordBtn")}</Button>
         </div>
     </div>
 }
