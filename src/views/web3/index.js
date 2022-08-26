@@ -11,8 +11,9 @@ import './index.scss'
 import { Button, Row, Col } from 'antd'
 import intl from 'react-intl-universal'
 import { useEffect, useState } from 'react'
-
+import { useTranslation } from './../../contexts/Localization'
 const Web3 = () => {
+    const { t } = useTranslation()
     const [index,setIndex] = useState(1)
     const [index2,setIndex2] = useState(1)
     useEffect(()=>{
@@ -48,17 +49,17 @@ const Web3 = () => {
     return <div>
         <div className="webI">
             <p>Web 3.0</p>
-            <p>{intl.get('web3')}</p>
+            <p>{t('web3')}</p>
             <img src={web3}></img>
         </div>
         <div className="webNFT">
             <p>WeFi NFT</p>
-            <p>{intl.get('ntfI')}</p>
+            <p>{t('ntfI')}</p>
             <img src={equityNFT}></img>
             <img src={functionNFT}></img>
             <Button onClick={()=>{
                 window.location.href = '/nft'
-            }}>{intl.get('Details')}</Button>
+            }}>{t('Details')}</Button>
         </div>
         <div className='DAO'>
             <Row>
@@ -66,43 +67,43 @@ const Web3 = () => {
                     <img src={DAO}></img>
                 </Col>
                 <Col span={12} className='dao_right'>
-                    <p>{intl.get('DAOG')}</p>
-                    <p>{intl.get('DAOI')}</p>
+                    <p>{t('DAOG')}</p>
+                    <p>{t('DAOI')}</p>
                     <img src={DAOM}></img>
                     <Button onClick={()=>{
                     window.location.href = '/dao'
-                }}>{intl.get('More')}</Button>
+                }}>{t('More')}</Button>
                 </Col>
             </Row>
         </div>
         <div className="BBQ">
             <p>BBQ</p>
-            <p>{intl.get('BBQI')}</p>
+            <p>{t('BBQI')}</p>
             <img src={bbq}></img>
             <Button onClick={()=>{
                     window.location.href = '/bbq'
-            }}>{intl.get('More')}</Button>
+            }}>{t('More')}</Button>
         </div>
         <div className="dev_route">
-            <p>{intl.get('WeFiHistory')}</p>
+            <p>{t('WeFiHistory')}</p>
             <div className='route-wrap'>
                 <a onClick={floatLeft}></a>
                 <div className='route'>
                     <div className='route_div'>
                         <div>
-                            <p>{intl.get('year')} <img src={route1}></img></p>
-                            <p>{intl.get('Startplanning')}</p>
+                            <p>{t('year')} <img src={route1}></img></p>
+                            <p>{t('Startplanning')}</p>
                             <p>...</p>
                         </div>
                         <div>
-                            <p>{intl.get('month')}<img src={route2}></img></p>
+                            <p>{t('month')}<img src={route2}></img></p>
 
-                            <p>{intl.get('productBased')}</p>
+                            <p>{t('productBased')}</p>
                             <p>...</p>
                         </div>
                         <div>
-                            <p>{intl.get('month2')}<img src={route3}></img></p>
-                            <p>{intl.get('Creation')}</p>
+                            <p>{t('month2')}<img src={route3}></img></p>
+                            <p>{t('Creation')}</p>
                             <p>...</p>
                         </div>
                         <div>
@@ -127,8 +128,8 @@ const Web3 = () => {
 
         </div>
         <div className="future_plan">
-            <p>{intl.get('FuturePlans')}</p>
-            <p>{intl.get('Covercountries')}</p>
+            <p>{t('FuturePlans')}</p>
+            <p>{t('Covercountries')}</p>
         </div>
     </div>
 }

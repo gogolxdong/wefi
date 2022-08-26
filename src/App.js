@@ -15,19 +15,17 @@ import './App.css'
 import './assets/flexible.scss'
 import './assets/flexible2.scss'
 import intl from 'react-intl-universal'
+import { validateLocaleAndSetLanguage } from "typescript"
+import { languageList, ZHCN } from 'config/localization/languages'
+import { useTranslation } from './contexts/Localization'
 
 function getLibrary(provider) {
   return new Web3(provider)
 }
 
-const locales = {
-  "en": require('./locales/en-US.json'),
-  "zh": require('./locales/zh-CN.json'),
-  "hk": require('./locales/zh-HK.json')
-}
 
 function App() {
-  const [lang, setLang] = useState("zh")
+  const { currentLanguage, setLanguage, t } = useTranslation()
   const context = useWeb3Context()
   const { connect, provider, address, hasCachedProvider, chainID, connected, disconnect, web3Modal } = context
   useMemo(() => {
@@ -37,15 +35,7 @@ function App() {
     } 
   }, [])
 
-  useEffect(() => {
-    let langVal = localStorage.getItem('language') ? localStorage.getItem('language') : lang
-    intl.init({
-      currentLocale: langVal,
-      locales,
-    }).then(() => {
-      console.log("init")
-    })
-  })
+
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
       <BrowserRouter>

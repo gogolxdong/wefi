@@ -21,8 +21,9 @@ import plate15 from './../../statics/plate (15).png'
 import plate16 from './../../statics/plate (16).png'
 import intl from 'react-intl-universal'
 import { useEffect, useState } from 'react'
-
+import { useTranslation } from './../../contexts/Localization'
 const Why = () => {
+    const { t } = useTranslation()
     const [imgUrl, setImgUrl] = useState(highlightbg)
     useEffect(() => {
         const width = document.documentElement.clientWidth
@@ -35,39 +36,39 @@ const Why = () => {
     return <div>
         <div className="why">
             <div className="wefi">
-                <p>{intl.get("wefiWhy")}</p>
-                <p>{intl.get('wefiIntroduce')}</p>
+                <p>{t("wefiWhy")}</p>
+                <p>{t('wefiIntroduce')}</p>
                 <Row>
                     <Col span={6}></Col>
                     <Col span={3}>
                         <span>100</span>
                         <span>%</span>
-                        <span>{intl.get('scializingIncome')}</span>
+                        <span>{t('scializingIncome')}</span>
                     </Col>
                     <Col span={3}>
                         <span>5</span>
                         <span>+</span>
-                        <span>{intl.get('user')}</span>
+                        <span>{t('user')}</span>
                     </Col>
                     <Col span={3}>
                         <span>50</span>
                         <span>+</span>
-                        <span>{intl.get('Resources')}</span>
+                        <span>{t('Resources')}</span>
                     </Col>
                     <Col span={3}>
                         <span>5000</span>
                         <span>+</span>
-                        <span>{intl.get('NewsPiecesAH')}</span>
+                        <span>{t('NewsPiecesAH')}</span>
                     </Col>
                     <Col span={6}></Col>
                 </Row>
             </div>
             <div className='highlight'>
-                <p>{intl.get('Highlights')}</p>
+                <p>{t('Highlights')}</p>
                 <img src={imgUrl}></img>
             </div>
             <div className='plateDivision'>
-                <p>{intl.get('Modules')}</p>
+                <p>{t('Modules')}</p>
                 <img src={bg4M}></img>
                 <div>
                     <img src={plate1}></img>

@@ -14,6 +14,7 @@ export const languageMap = new Map<Language['locale'], Record<string, string>>()
 languageMap.set(EN.locale, translations)
 
 export const LanguageContext = createContext<any>(undefined)
+// export const LanguageContext = createContext<ContextApi>(undefined!)
 
 export const LanguageProvider: React.FC<any> = ({ children }) => {
   const [state, setState] = useState<ProviderState>(() => {
@@ -46,6 +47,8 @@ export const LanguageProvider: React.FC<any> = ({ children }) => {
   }, [setState])
 
   const setLanguage = useCallback(async (language: Language) => {
+    console.log("language:",language)
+
     if (!languageMap.has(language.locale)) {
       setState((prevState) => ({
         ...prevState,
@@ -53,9 +56,9 @@ export const LanguageProvider: React.FC<any> = ({ children }) => {
       }))
 
       const locale = await fetchLocale(language.locale)
+      console.log("locale:",locale)
       const enLocale = languageMap.get(EN.locale)
 
-      // Merge the EN locale to ensure that any locale fetched has all the keys
       languageMap.set(language.locale, { ...enLocale, ...locale })
       localStorage.setItem(LS_KEY, language.locale)
 
@@ -76,12 +79,11 @@ export const LanguageProvider: React.FC<any> = ({ children }) => {
 
   const translate: TranslateFunction = useCallback(
     (key, data) => {
-      const translationSet = languageMap.has(currentLanguage.locale)
-        ? languageMap.get(currentLanguage.locale)
+      const translationSet = languageMap.has(currentLanguage?.locale)
+        ? languageMap.get(currentLanguage?.locale)
         : languageMap.get(EN.locale)
       const translatedText = translationSet && translationSet[key] || key
 
-      // Check the existence of at least one combination of %%, separated by 1 or more non space characters
       const includesVariable = translatedText.match(/%\S+?%/gm)
 
       if (includesVariable && data) {

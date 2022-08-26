@@ -4,8 +4,9 @@ import { injected } from './../constants/index'
 import { Web3ReactProvider, useWeb3React, } from '@web3-react/core'
 import { useEagerConnect, useInactiveListener } from './../constants/hooks'
 import { useWeb3Context } from 'web3'
-
+import { useTranslation } from './contexts/Localization';
 function ConnectChain(props) {
+    const { t } = useTranslation()
     const { connector, library, chainId, account, activate, deactivate, active, error } = useWeb3Context()
 
     const [activatingConnector, setActivatingConnector] = React.useState()

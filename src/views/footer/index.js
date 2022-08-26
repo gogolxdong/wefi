@@ -14,19 +14,21 @@ import intl from 'react-intl-universal'
 import iosapp from './../../statics/download.png'
 import ios from './../../statics/ios.png'
 import android from './../../statics/android.png'
+import { useTranslation } from './../../contexts/Localization'
 const Footer = () => { 
+    const { t } = useTranslation()
     const content = (
     <div className="popover">
         <Row>
             <Col span={12}>
                 <img src={iosapp}></img>
                 <p><img src={ios}></img><span>ios</span></p>
-                <Button>{intl.get('iosapp')}</Button>
+                <Button>{t('iosapp')}</Button>
             </Col>
             <Col span={12}>
                 <img src={iosapp}></img>
                 <p><img src={android}></img><span>Android</span></p>
-                <Button>{intl.get('andriodapp')}</Button>
+                <Button>{t('andriodapp')}</Button>
             </Col>
         </Row>
     </div>
@@ -49,12 +51,12 @@ const Footer = () => {
                         </Col>
                         <Col span={8}>
                             <p><span>WeFi</span><span>Android & iOS</span></p>
-                            <p>{intl.get("clickApp")}</p>
+                            <p>{t("clickApp")}</p>
                         </Col>
                        
                         <Col span={6}>
                             <Popover content={content} overlayClassName="pc_popover">
-                                <Button>{intl.get("wefiwordBtn")}</Button>
+                                <Button>{t("wefiwordBtn")}</Button>
                             </Popover>
                             <a id="floatD" onClick={closeDownload}><img src={icon9}></img></a>
                         </Col>
@@ -81,10 +83,10 @@ const Footer = () => {
         <div className="bottom">
             <p>© 2022 WeFi Pty. Ltd.</p>
             <p>
-                <span>{intl.get('TermsAConditions')}</span><span>|</span>
-                <span>{intl.get('PrivacyPolicy')}</span><span>|</span>
-                <span>{intl.get('AMLPolicy')}</span><span>|</span>
-                <span>{intl.get('PGPKey')}</span>
+                <span>{t('TermsAConditions')}</span><span>|</span>
+                <span>{t('PrivacyPolicy')}</span><span>|</span>
+                <span>{t('AMLPolicy')}</span><span>|</span>
+                <span>{t('PGPKey')}</span>
             </p>
         </div>
     </div>
