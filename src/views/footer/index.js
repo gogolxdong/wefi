@@ -15,6 +15,7 @@ import iosapp from './../../statics/download.png'
 import ios from './../../statics/ios.png'
 import android from './../../statics/android.png'
 import { useTranslation } from './../../contexts/Localization'
+
 const Footer = () => { 
     const { t } = useTranslation()
     const content = (

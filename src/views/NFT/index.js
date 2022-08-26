@@ -12,19 +12,18 @@ import functionNFT from './../../statics/function.png'
 import wefiEquityAbi from '../../abi/wefiEquity.json'
 import wefiFunctionAbi from '../../abi/wefiFunction.json'
 import usdtAbi from '../../abi/usdt.json'
-import intl from 'react-intl-universal'
 import { ethers } from "ethers"
 import { BigNumber } from "@ethersproject/bignumber"
-import { useWeb3Context } from "web3"
 import { useTranslation } from './../../contexts/Localization'
-const NFT = () => {
+
+const NFT = ({ props }) => {
     const { t } = useTranslation()
-  let { connect, provider, hasCachedProvider, chainID, connected } = useWeb3Context();
-    
+    let { connect, provider, hasCachedProvider, chainID, connected } = props;
+
     // const wefiFunctionAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" //MATIC
     // const wefiEquityAddress = "0x31d0f1c5e163f9e84b15073bca90a3bf87baad88" //MATIC
-    const wefiFunctionAddress = "0x4D590160C50f58fC01EDC2ed1440CDF9FFD41D63" 
-    const wefiEquityAddress = "0x56890896501540344098376B431Bd2e29dbe1118" 
+    const wefiFunctionAddress = "0x4D590160C50f58fC01EDC2ed1440CDF9FFD41D63"
+    const wefiEquityAddress = "0x56890896501540344098376B431Bd2e29dbe1118"
     const usdtAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" // bsc testnet
     const signer = provider.getSigner()
     const wefiFunction = new ethers.Contract(wefiFunctionAddress, wefiFunctionAbi, signer)
@@ -54,7 +53,7 @@ const NFT = () => {
     }
 
     useEffect(() => {
-        document.querySelector(".ant-switch-handle").innerHTML = t('benefit') + 'NFT'
+        document.querySelector(".ant-switch-handle").innerHTML = t('equity') + 'NFT'
         const width = document.documentElement.clientWidth
         const placard = document.querySelector('.placard')
         if (width <= 415) {
@@ -80,7 +79,7 @@ const NFT = () => {
             switchDom.style.left = "50%"
             switchInner.style.textAlign = "left"
             switchInner.style.marginLeft = "20px"
-            switchDom.innerHTML = t('benefit') + 'NFT';
+            switchDom.innerHTML = t('equity') + 'NFT';
             setwefiImg(functionNFT)
         }
 
@@ -101,7 +100,7 @@ const NFT = () => {
         <div className="pre_sale">
             <Row>
                 <Col span={12} className="pre_sale_left">
-                    <p>WeFi{t('functional')}NFT/WeFi{t('benefit')}<br />NFT{t('presale')}</p>
+                    <p>WeFi{t('functional')}NFT/WeFi{t('equity')}<br />NFT{t('presale')}</p>
                     <div className="sale_img">
                         <img src={wefiImg}></img>
                         <p>{t('PresalePrice')} xxxx USDT</p>
@@ -110,7 +109,7 @@ const NFT = () => {
                     <p>
                         <Switch
                             checkedChildren={t('functional') + "NFT"}
-                            unCheckedChildren={t('benefit') + "NFT"}
+                            unCheckedChildren={t('equity') + "NFT"}
                             defaultChecked
                             onChange={switchChange} id="nft" />
                     </p>
@@ -122,29 +121,29 @@ const NFT = () => {
                     <Button onClick={async () => {
                         const address = await signer.getAddress()
                         const zero = BigNumber.from(0)
-      
+
                         if (wefiImg == equityNFT) {
                             const allowance = await dfs.allowance(address, wefiEquityAddress)
-                            console.log("allowance:",allowance)
+                            console.log("allowance:", allowance)
                             if (allowance.eq(zero)) {
-                               const receipt = await dfs.approve(wefiEquityAddress, BigNumber.from(2).pow(255))
-                               await receipt.wait()
+                                const receipt = await dfs.approve(wefiEquityAddress, BigNumber.from(2).pow(255))
+                                await receipt.wait()
                             }
                             const price = await wefiEquity.getPrice()
-                            console.log("price:",ethers.utils.formatUnits(price,"ether"))
-                            await wefiEquity.casting({value: ethers.utils.formatUnits(price,"ether")})
+                            console.log("price:", ethers.utils.formatUnits(price, "ether"))
+                            await wefiEquity.casting({ value: ethers.utils.formatUnits(price, "ether") })
 
                         } else {
                             const allowance = await dfs.allowance(address, wefiFunctionAddress)
-                            console.log("allowance:",allowance)
+                            console.log("allowance:", allowance)
                             if (allowance.eq(zero)) {
                                 const receipt = await dfs.approve(wefiFunctionAddress, BigNumber.from(2).pow(255))
-                               await receipt.wait()
+                                await receipt.wait()
 
                             }
                             const price = await wefiFunction.getPrice()
-                            console.log("price:",ethers.utils.formatUnits(price,"ether"))
-                            await wefiFunction.casting({value: ethers.utils.formatUnits(price,"ether")})
+                            console.log("price:", ethers.utils.formatUnits(price, "ether"))
+                            await wefiFunction.casting({ value: ethers.utils.formatUnits(price, "ether") })
 
                         }
                     }}>{t('Confirm')}MINT</Button>
@@ -163,7 +162,7 @@ const NFT = () => {
                 <p>{t('NFTI')}</p>
             </div>
             <div>
-                <p><span></span>WeFi{t('benefit')}NFT</p>
+                <p><span></span>WeFi{t('equity')}NFT</p>
                 <p>{t('NFTBenefit')}<br></br>
                     {t('NFTBenefit2')}<br></br>
                     {t('NFTBenefit3')}<br></br>
@@ -198,7 +197,7 @@ const NFT = () => {
                     </div>
                 </div>
                 <div className="distribute_right">
-                    <p>WeFi{t('benefit')}NFT</p>
+                    <p>WeFi{t('equity')}NFT</p>
                     <span></span>
                     <div>
                         <Row>
