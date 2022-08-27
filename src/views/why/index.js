@@ -1,6 +1,7 @@
 import './index.scss'
 import { Row, Col } from 'antd'
 import highlightbg from './../../statics/bg3.png'
+import highlightbg_en from './../../statics/bg3_en.png'
 import highlightbgM from './../../statics/mobile/bg3.png'
 import bg4M from './../../statics/mobile/bg4.png'
 import plate1 from './../../statics/plate (1).png'
@@ -65,7 +66,10 @@ const Why = () => {
             </div>
             <div className='highlight'>
                 <p>{t('Highlights')}</p>
-                <img src={imgUrl}></img>
+                {
+                    window.localStorage.getItem('language') && window.localStorage.getItem('language') === 'en-US' ?
+                    <img src={highlightbg_en} /> : <img src={imgUrl} />
+                }
             </div>
             <div className='plateDivision'>
                 <p>{t('Modules')}</p>
