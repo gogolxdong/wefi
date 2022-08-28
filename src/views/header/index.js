@@ -86,7 +86,7 @@ const Header = ({ props }) => {
     const query = useQuery()
     const { isMobile } = useMatchBreakpoints()
     const { connect, disconnect, connected, web3, providerChainID, checkWrongNetwork, address, web3Modal, mobile } = props
-    console.log(providerChainID, address)
+    
     const triedEager = useEagerConnect()
     const [modalVisible, setModalVisible] = useState(false)
     const [activatingConnector, setActivatingConnector] = React.useState()
@@ -189,11 +189,15 @@ const Header = ({ props }) => {
             move()
         }, 5000)
         const width = document
-
         fetch(`https://wefi.space/home-web/index/getAffiche?language=${currentLanguage?.locale}`).then((res) => {
             res.json().then((response) => {
                 if (response.code == 1) {
+                    // response.data.map((item)=>{
+                    //     item.title=t(item.title)
+                    // })
+                    console.log(response.data)
                     setannouncementList(response.data || [])
+                   
                     const timer = setInterval(() => {
                         move()
                     }, 7000)

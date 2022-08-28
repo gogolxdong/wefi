@@ -1,4 +1,5 @@
 import web3 from './../../statics/web3.png'
+import enweb3 from './../../statics/enweb3.png'
 import equityNFT from './../../statics/equity.png'
 import functionNFT from './../../statics/function.png'
 import DAO from './../../statics/DAO.png'
@@ -12,6 +13,7 @@ import { Button, Row, Col } from 'antd'
 import intl from 'react-intl-universal'
 import { useEffect, useState } from 'react'
 import { useTranslation } from './../../contexts/Localization'
+import {  getLanguageCodeFromLS } from '../../../src/contexts/Localization/helpers'
 
 const Web3 = () => {
     const { t } = useTranslation()
@@ -47,11 +49,18 @@ const Web3 = () => {
 
         }
     }
+    let web3bg = web3
+    const codeFromStorage = getLanguageCodeFromLS()
+    if (codeFromStorage === 'en-US') {
+        console.log('enweb3')
+        web3bg = enweb3
+    }
+
     return <div>
         <div className="webI">
             <p>Web 3.0</p>
             <p>{t('web3')}</p>
-            <img src={web3}></img>
+            <img src={web3bg}></img>
         </div>
         <div className="webNFT">
             <p>WeFi NFT</p>
@@ -97,29 +106,29 @@ const Web3 = () => {
                             <p>...</p>
                         </div>
                         <div>
-                            <p>{t('month')}<img src={route2}></img></p>
+                            <p>8-2021<img src={route2}></img></p>
 
                             <p>{t('productBased')}</p>
                             <p>...</p>
                         </div>
                         <div>
-                            <p>{t('month2')}<img src={route3}></img></p>
+                            <p>9-2021<img src={route3}></img></p>
                             <p>{t('Creation')}</p>
                             <p>...</p>
                         </div>
                         <div>
-                            <p>2021年10月<img src={route3}></img></p>
-                            <p>上线并完成了6个月的运营测试</p>
+                            <p>10-2021<img src={route3}></img></p>
+                            <p>{t('October 2021')}</p>
                             <p>...</p>
                         </div>
                         <div>
-                            <p>2022年3月<img src={route3}></img></p>
-                            <p>发起首轮资本融资计划</p>
+                            <p>3-2022<img src={route3}></img></p>
+                            <p>{t('March 2022')}</p>
                             <p>...</p>
                         </div>
                         <div>
-                            <p>2022年4月<img src={route3}></img></p>
-                            <p>正式推动股权、币权融资计划</p>
+                            <p>4-2022<img src={route3}></img></p>
+                            <p>{t('April 2022')}</p>
                             <p>...</p>
                         </div>
                     </div>

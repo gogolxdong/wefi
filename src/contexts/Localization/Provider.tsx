@@ -19,17 +19,36 @@ export const LanguageContext = createContext<any>(undefined)
 export const LanguageProvider: React.FC<any> = ({ children }) => {
   const [state, setState] = useState<ProviderState>(() => {
     const codeFromStorage = getLanguageCodeFromLS()
-
     return {
       ...initialState,
       currentLanguage: languages[codeFromStorage],
     }
   })
   const { currentLanguage } = state
+  useEffect( 
+    ()=>{
+        const init = async () => {
+        const codeFromStorage = getLanguageCodeFromLS()
+        const enLocale = languageMap.get(EN.locale)
+        const currentLocale = await fetchLocale(codeFromStorage)
+        languageMap.set(codeFromStorage, { ...enLocale, ...currentLocale })
+        setState((prevState) => ({
+          ...prevState,
+          isFetching: false,
+        }))
+      }
+      console.log('执行了useEffect')
+      init()
+    },[]
+  )
+
 
   useEffect(() => {
     const fetchInitialLocales = async () => {
       const codeFromStorage = getLanguageCodeFromLS()
+      console.log('codeFromStorage',codeFromStorage)
+      console.log('En:',EN.locale)
+
 
       if (codeFromStorage !== EN.locale) {
         const enLocale = languageMap.get(EN.locale)
@@ -47,14 +66,16 @@ export const LanguageProvider: React.FC<any> = ({ children }) => {
   }, [setState])
 
   const setLanguage = useCallback(async (language: Language) => {
-    console.log("language:",language)
+    console.log("language:------------------->",language)
 
     if (!languageMap.has(language.locale)) {
+      console.log('nononono=======')
       setState((prevState) => ({
         ...prevState,
         isFetching: true,
       }))
-
+    
+      console.log('language.locale--->',language.locale)
       const locale = await fetchLocale(language.locale)
       console.log("locale:",locale)
       const enLocale = languageMap.get(EN.locale)
@@ -68,6 +89,12 @@ export const LanguageProvider: React.FC<any> = ({ children }) => {
         currentLanguage: language,
       }))
     } else {
+      
+      const locale = await fetchLocale(language.locale)
+   
+      const enLocale = languageMap.get(EN.locale)
+
+      languageMap.set(language.locale, { ...enLocale, ...locale })
       localStorage.setItem(LS_KEY, language.locale)
       setState((prevState) => ({
         ...prevState,
@@ -79,6 +106,7 @@ export const LanguageProvider: React.FC<any> = ({ children }) => {
 
   const translate: TranslateFunction = useCallback(
     (key, data) => {
+    
       const translationSet = languageMap.has(currentLanguage?.locale)
         ? languageMap.get(currentLanguage?.locale)
         : languageMap.get(EN.locale)
@@ -95,7 +123,7 @@ export const LanguageProvider: React.FC<any> = ({ children }) => {
 
         return interpolatedText
       }
-
+      
       return translatedText
     },
     [currentLanguage],

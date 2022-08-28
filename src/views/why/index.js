@@ -22,17 +22,150 @@ import plate16 from './../../statics/plate (16).png'
 import intl from 'react-intl-universal'
 import { useEffect, useState } from 'react'
 import { useTranslation } from './../../contexts/Localization'
+import {  getLanguageCodeFromLS } from '../../../src/contexts/Localization/helpers'
+import enhighlightbg from './../../statics/lightbg.png'
+import imgicon1 from './../../statics/imgicon1.png'
+import imgicon2 from '../../statics/imgicon2.png'
+import imgicon3 from '../../statics/imgicon3.png'
+import imgicon4 from '../../statics/imgicon4.png'
+import imgicon5 from '../../statics/imgicon5.png'
+import imgicon6 from '../../statics/imgicon6.png'
+import imgicon7 from '../../statics/imgicon7.png'
+import imgicon8 from '../../statics/imgicon8.png'
+import imgicon9 from '../../statics/imgicon9.png'
+import imgicon10 from '../../statics/imgicon10.png'
+import imgicon11 from '../../statics/imgicon11.png'
+import imgicon12 from '../../statics/imgicon12.png'
+import imgicon13 from '../../statics/imgicon13.png'
+import imgicon14 from '../../statics/imgicon14.png'
+import imgicon15 from '../../statics/imgicon15.png'
+import imgicon16 from '../../statics/imgicon16.png'
+
+const iconData =[
+    {
+        url:imgicon1,
+        title:'Global local irrigation bar',
+        desc:'local communication, irrigation interaction'
+    },
+    {
+        url:imgicon2,
+        title:'Global KOL bar',
+        desc:'topic leading, communication and interaction'
+    },
+    {
+        url:imgicon3,
+        title:'Global Private Equity Bar',
+        desc:'gathering global first-hand private equity information'
+    },
+    {
+        url:imgicon4,
+        title:'Global Events Bar',
+        desc:'Latest Events, Lightning Acces'
+    },
+    {
+        url:imgicon5,
+        title:'Global part-time job',
+        desc:'talent gathering, recruitment worry-free'
+    },
+    {
+        url:imgicon6,
+        title:'The World Air Drop Bar',
+        desc:'Air Drop 0 jack, more fragrant without spending money'
+    },
+    {
+        url:imgicon7,
+        title:'Global Mining Bar',
+        desc:'timely grasp the top mining hot dynamic'
+    },
+    
+    
+    {
+        url:imgicon8,
+        title:'Global Gold Bar',
+        desc:'reserves, most timely investment insider'
+    },
+    {
+        url:imgicon9,
+        title:'Global Commodities Bar',
+        desc:'information exchange such as commodity market, hot spot overview, etc.'
+    },
+
+
+    {
+        url:imgicon10,
+        title:'Global Securities Bar',
+        desc:'Global Compliance Securities Exchange'
+    },
+    {
+        url:imgicon11,
+        title:'Global Stocks Bar',
+        desc:'market, individual stocks topic discussion'
+    },
+    {
+        url:imgicon12,
+        title:'Global Futures Bar',
+        desc:'dynamic, market tracking'
+    },
+    {
+        url:imgicon13,
+        title:'Global foreign exchange bar',
+        desc:'policy, form, exchange rate exchange'
+    },
+    {
+        url:imgicon14,
+        title:'Global index bar',
+        desc:'index, market discussion gathering place'
+    },
+    {
+        url:imgicon15,
+        title:'Global Quantitative Strategy Bar',
+        desc:'policy, metrics implementation tools sharing'
+    },
+    {
+        url:imgicon16,
+        title:'Global Trading Software Bar',
+        desc:'trading market software sharing'
+    }
+
+]
+const ImgItem = ({picurl,title,desc}) => {
+    return <div className="moduleStyle">
+        <div className="imgStyle"><img src={picurl}/></div>
+        <div className="textStyle">
+            <div className='title'>{title}</div>
+            <div className="desc" >{desc}</div>
+        </div>
+    </div>
+}
+
 const Why = () => {
     const { t } = useTranslation()
-    const [imgUrl, setImgUrl] = useState(highlightbg)
+     
+    const codeFromStorage = getLanguageCodeFromLS()
+    let isEnlang = false
+    let pclightBg= highlightbg
+   
+    if (codeFromStorage === 'en-US') {
+       
+        console.log('en-bg====')
+        pclightBg = enhighlightbg
+        isEnlang = true
+    }
+
+    const [imgUrl, setImgUrl] = useState(pclightBg)
+    const [realWidth,setRealWidth] = useState('800px')
     useEffect(() => {
         const width = document.documentElement.clientWidth
         if (width <= 415) {
             setImgUrl(highlightbgM)
+            setRealWidth('375px')
         } else {
-            setImgUrl(highlightbg)
+            setImgUrl(pclightBg)
+            setRealWidth('800px')
         }
     }, [imgUrl])
+
+    
     return <div>
         <div className="why">
             <div className="wefi">
@@ -67,34 +200,57 @@ const Why = () => {
                 <p>{t('Highlights')}</p>
                 <img src={imgUrl}></img>
             </div>
-            <div className='plateDivision'>
+           { !isEnlang && (<div className='plateDivision'>
                 <p>{t('Modules')}</p>
                 <img src={bg4M}></img>
-                <div>
-                    <img src={plate1}></img>
-                    <img src={plate2}></img>
-                    <img src={plate3}></img>
-                    <img src={plate4}></img>
+                <div className='drypic'>
+                    
+                    <div>
+                        <img src={plate1}></img>
+                        <img src={plate2}></img>
+                        <img src={plate3}></img>
+                        <img src={plate4}></img>
+                    </div>
+                    <div>
+                        <img src={plate5}></img>
+                        <img src={plate6}></img>
+                        <img src={plate7}></img>
+                        <img src={plate8}></img>
+                    </div>
+                    <div>
+                        <img src={plate9}></img>
+                        <img src={plate10}></img>
+                        <img src={plate16}></img>
+                        <img src={plate11}></img>
+                    </div>
+                    <div>
+                        <img src={plate12}></img>
+                        <img src={plate13}></img>
+                        <img src={plate14}></img>
+                        <img src={plate15}></img>
+                    </div>
+
                 </div>
-                <div>
-                    <img src={plate5}></img>
-                    <img src={plate6}></img>
-                    <img src={plate7}></img>
-                    <img src={plate8}></img>
-                </div>
-                <div>
-                    <img src={plate9}></img>
-                    <img src={plate10}></img>
-                    <img src={plate16}></img>
-                    <img src={plate11}></img>
-                </div>
-                <div>
-                    <img src={plate12}></img>
-                    <img src={plate13}></img>
-                    <img src={plate14}></img>
-                    <img src={plate15}></img>
-                </div>
+              </div>)
+           } 
+
+
+           { isEnlang && ( 
+           <div>
+           <div className='ModulesStyle'>{t('Modules')}</div>
+           <div style={{ margin:'0 auto', display:'flex',width:realWidth,flexWrap:"wrap",justifyContent:"space-between"}}>
+
+                
+                {iconData.map( (v,index)=>{
+                    console.log(v.url)
+                    return  (
+                        <ImgItem picurl={v.url} title={v.title} desc={v.desc}></ImgItem>
+                      )
+                })}
             </div>
+            </div>
+            )
+         }
         </div>
     </div>
 }
