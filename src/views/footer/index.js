@@ -11,9 +11,10 @@ import icon7 from './../../statics/icon7.png'
 import icon8 from './../../statics/icon8.png'
 import icon9 from './../../statics/mobile/icon9.png'
 import intl from 'react-intl-universal'
-import iosapp from './../../statics/download.png'
+import iosapp from './../../statics/iosipa.png'
+import androidapk from './../../statics/androidapk.png'
 import ios from './../../statics/ios.png'
-import android from './../../statics/android.png'
+import android from './../../statics/androidapk.png'
 import { useTranslation } from './../../contexts/Localization'
 
 const Footer = () => { 
@@ -24,12 +25,12 @@ const Footer = () => {
             <Col span={12}>
                 <img src={iosapp}></img>
                 <p><img src={ios}></img><span>ios</span></p>
-                <Button>{t('iosapp')}</Button>
+                <a href="https://wefi.space/download/ios.ipa"><Button>{t('iosapp')}</Button></a>
             </Col>
             <Col span={12}>
-                <img src={iosapp}></img>
+                <img src={androidapk}></img>
                 <p><img src={android}></img><span>Android</span></p>
-                <Button>{t('andriodapp')}</Button>
+                <a href="https://wefi.space/download/android.apk"><Button>{t('andriodapp')}</Button></a>
             </Col>
         </Row>
     </div>

@@ -5,7 +5,8 @@ import app1 from './../../statics/app1.png'
 import app2 from './../../statics/app2.png'
 import app3 from './../../statics/app3.png'
 import app4 from './../../statics/app4.png'
-import iosapp from './../../statics/download.png'
+import iosapp from './../../statics/iosipa.png'
+import androidapk from './../../statics/androidapk.png'
 import ios from './../../statics/ios.png'
 import android from './../../statics/android.png'
 import nav from './../../statics/mobile/nav.png'
@@ -86,7 +87,7 @@ const Header = ({ props }) => {
     const query = useQuery()
     const { isMobile } = useMatchBreakpoints()
     const { connect, disconnect, connected, web3, providerChainID, checkWrongNetwork, address, web3Modal, mobile } = props
-    console.log(providerChainID, address)
+
     const triedEager = useEagerConnect()
     const [modalVisible, setModalVisible] = useState(false)
     const [activatingConnector, setActivatingConnector] = React.useState()
@@ -113,12 +114,12 @@ const Header = ({ props }) => {
                 <Col span={12}>
                     <img src={iosapp}></img>
                     <p><img src={ios}></img><span>IOS</span></p>
-                    <Button>{t('iosapp')}</Button>
+                    <a href="https://wefi.space/download/ios.ipa"><Button>{t('iosapp')}</Button></a>
                 </Col>
                 <Col span={12}>
-                    <img src={iosapp}></img>
+                    <img src={androidapk}></img>
                     <p><img src={android}></img><span>Android</span></p>
-                    <Button>{t('andriodapp')}</Button>
+                    <a href="https://wefi.space/download/android.apk"><Button>{t('andriodapp')}</Button></a>
                 </Col>
             </Row>
         </div>
@@ -189,11 +190,15 @@ const Header = ({ props }) => {
             move()
         }, 5000)
         const width = document
-
         fetch(`https://wefi.space/home-web/index/getAffiche?language=${currentLanguage?.locale}`).then((res) => {
             res.json().then((response) => {
                 if (response.code == 1) {
+                    // response.data.map((item)=>{
+                    //     item.title=t(item.title)
+                    // })
+                    console.log(response.data)
                     setannouncementList(response.data || [])
+
                     const timer = setInterval(() => {
                         move()
                     }, 7000)

@@ -1,4 +1,53 @@
 .why {
+    .ModulesStyle{
+        font-size: 40px;
+        margin: 50px auto;
+        text-align: center;
+    }
+    .moduleStyle{
+      
+      display: flex;
+      width: 172px;
+      height: 108px;
+      background: #FFFFFF;
+      border-radius: 8px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2px 5px;
+      box-shadow: 1px 1px 1px 2px #f2f2f2;
+      margin: 20px 5px;
+      .imgStyle{
+        float: left;
+        text-align: left;
+        img{
+            width: 35px;
+            height: 35px;
+          }
+      }
+      .textStyle{
+         display: flex;
+         flex-direction: column;
+         position: relative;
+        .title{
+            font-size: 14px;
+            font-family: Microsoft YaHei;
+            font-weight: bold;
+            color: #000000;
+            line-height: 14px;
+            text-align: left;
+            margin-left: 10px;
+        }
+        .desc{
+            line-height: 15px;
+            font-size: 12px;
+            font-family: Microsoft YaHei;
+            color: #8F8F8F;
+            text-align: left;
+            margin-left: 10px;
+        }
+      }
+
+    }
     .wefi {
         color: #101010;
         text-align: center;
