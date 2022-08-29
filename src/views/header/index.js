@@ -86,7 +86,6 @@ const Header = ({ props }) => {
     const query = useQuery()
     const { isMobile } = useMatchBreakpoints()
     const { connect, disconnect, connected, web3, providerChainID, checkWrongNetwork, address, web3Modal, mobile } = props
-
     const triedEager = useEagerConnect()
     const [modalVisible, setModalVisible] = useState(false)
     const [activatingConnector, setActivatingConnector] = React.useState()
@@ -216,9 +215,15 @@ const Header = ({ props }) => {
                     console.log(response.data)
                     setannouncementList(response.data || [])
 
+
                     // const timer = setInterval(() => {
                     //     move()
                     // }, 7000)
+
+                    const timer = setInterval(() => {
+                        move()
+                    }, 7000)
+
                 }
             })
 
@@ -244,7 +249,14 @@ const Header = ({ props }) => {
             </div>
 
             <div className="connect_purse">
-                <Button onClick={showModal} id="connectBtn">{!address ? t("ConnectWallet") : shorten(address)}</Button>
+                <Button onClick={async() => {
+                    if (await checkWrongNetwork()) return
+                    if (!connected) {
+                        connect()
+                    } else {
+                        disconnect()
+                    }
+                }} id="connectBtn">{!address ? t("ConnectWallet") : shorten(address)}</Button>
                 {/* <ConnectMenu></ConnectMenu> */}
             </div>
             <div className="menu_top" >
@@ -272,7 +284,7 @@ const Header = ({ props }) => {
                 </Col>
             </Row>
         </div>
-        <Modal
+        {/* <Modal
             title={address ? shorten(address) : "ConnectWallet"}
             cancelText={true}
             centered
@@ -307,7 +319,7 @@ const Header = ({ props }) => {
                 <img src={app4}></img>
                 <p>More</p>
             </p>
-        </Modal>
-    </div>
+        </Modal> */}
+    </div >
 }
 export default Header

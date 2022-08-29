@@ -21,7 +21,6 @@ function getLibrary(provider) {
 function App() {
   const context = useWeb3Context()
   const { connect, provider, address, hasCachedProvider, chainID, connected, disconnect, web3Modal } = context
-  console.log("address:",address)
   useMemo(() => {
     const cached = hasCachedProvider()
     if (cached) {

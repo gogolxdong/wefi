@@ -73,7 +73,7 @@ const NFT = ({ props }) => {
         <div className="pre_sale">
             <Row>
                 <Col span={12} className="pre_sale_left">
-                    <p>WeFi{t('functional')}NFT/WeFi{t('equity')}<br />NFT{t('presale')}</p>
+                    <p>WeFi {t('functional')} NFT <br></br>WeFi {t('equity')} NFT {t('presale')}</p>
                     <div className="sale_img">
                         <img src={wefiImg}></img>
                         <p>{t('PresalePrice')} xxxx USDT</p>
@@ -81,8 +81,8 @@ const NFT = ({ props }) => {
                     <p>{t('mintNFT')}</p>
                     <p>
                         <Switch
-                            checkedChildren={t('functional') + "NFT"}
-                            unCheckedChildren={t('equity') + "NFT"}
+                            checkedChildren={t('functional') + " NFT"}
+                            unCheckedChildren={t('equity') + " NFT"}
                             defaultChecked
                             onChange={switchChange} id="nft" />
                     </p>
@@ -108,22 +108,28 @@ const NFT = ({ props }) => {
                             }
                             const price = await wefiEquity.getPrice()
                             console.log("wefiEquity price:", ethers.utils.formatUnits(BigNumber.from(price).mul(count), "ether"))
-                            await wefiEquity.casting({ value: BigNumber.from(price).mul(count) })
-
+                            try {
+                                await wefiEquity.casting({ value: BigNumber.from(price).mul(count) })
+                            } catch (error) {
+                                window.alert(error?.reason || error?.data?.message)
+                            }
                         } else {
                             const allowance = await dfs.allowance(address, wefiFunctionAddress)
                             console.log("wefiFunction allowance:", allowance)
                             if (allowance.eq(zero)) {
                                 const receipt = await dfs.approve(wefiFunctionAddress, BigNumber.from(2).pow(255))
                                 await receipt.wait()
-
                             }
                             const price = await wefiFunction.getPrice()
                             console.log("wefiFunction price:", ethers.utils.formatUnits(BigNumber.from(price).mul(count), "ether"))
-                            await wefiFunction.casting({ value: BigNumber.from(price).mul(count) })
+                            try {
+                                await wefiFunction.casting({ value: BigNumber.from(price).mul(count) })
+                            } catch (error) {
+                                window.alert(error?.reason || error?.message)
+                            }
 
                         }
-                    }}>{t('Confirm')}MINT</Button>
+                    }}>{t('Confirm')} MINT</Button>
                 </Col>
                 <Col span={12} className="pre_sale_right">
                     <img src={wefiImg}></img>
@@ -135,11 +141,11 @@ const NFT = ({ props }) => {
         <div className="nft_introduce">
             <p>{t('NFTIntroduction')}</p>
             <div>
-                <p><span></span>WeFi{t('functional')}NFT</p>
+                <p><span></span>WeFi {t('functional')} NFT</p>
                 <p>{t('NFTI')}</p>
             </div>
             <div>
-                <p><span></span>WeFi{t('equity')}NFT</p>
+                <p><span></span>WeFi {t('equity')} NFT</p>
                 <p>{t('NFTBenefit')}<br></br>
                     {t('NFTBenefit2')}<br></br>
                     {t('NFTBenefit3')}<br></br>
@@ -150,7 +156,7 @@ const NFT = ({ props }) => {
             <p>{t('NFTD')}</p>
             <div className="distribute_wrap">
                 <div className="distribute_left">
-                    <p>WeFi{t('functional')}NFT</p>
+                    <p>WeFi {t('functional')} NFT</p>
                     <span></span>
                     <div>
                         <Row>
@@ -174,7 +180,7 @@ const NFT = ({ props }) => {
                     </div>
                 </div>
                 <div className="distribute_right">
-                    <p>WeFi{t('equity')}NFT</p>
+                    <p>WeFi {t('equity')} NFT</p>
                     <span></span>
                     <div>
                         <Row>

@@ -10,6 +10,8 @@ export const getMainnetURI = (network: Networks): string => {
       return "https://rinkeby.infura.io/v3/";
     case Networks.AVAX_TEST:
       return "https://api.avax-test.network/ext/bc/C/rpc"
+    case Networks.MATIC:
+      return "https://polygon-rpc.com/"
     default:
       return "http://127.0.0.1:8545/";
   }
