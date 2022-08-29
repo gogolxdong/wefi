@@ -225,7 +225,13 @@ const Header = ({ props }) => {
             </div>
 
             <div className="connect_purse">
-                <Button onClick={showModal} id="connectBtn">{!address ? t("ConnectWallet") : shorten(address)}</Button>
+                <Button onClick={() => {
+                    if (!connected) {
+                        connect()
+                    } else {
+                        disconnect()
+                    }
+                }} id="connectBtn">{!address ? t("ConnectWallet") : shorten(address)}</Button>
                 {/* <ConnectMenu></ConnectMenu> */}
             </div>
             <div className="menu_top" >
@@ -289,6 +295,6 @@ const Header = ({ props }) => {
                 <p>More</p>
             </p>
         </Modal> */}
-    </div>
+    </div >
 }
 export default Header
