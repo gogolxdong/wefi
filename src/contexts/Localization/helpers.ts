@@ -5,7 +5,8 @@ const publicUrl = process.env.PUBLIC_URL || ''
 export const LS_KEY = 'language'
 
 export const fetchLocale = async (locale) => {
-  const response = await fetch(`${publicUrl}/locales/${locale}.json`)
+  const url = publicUrl + '/locales/' + locale + '.json'
+  const response = await fetch(url)
   const data = await response.json()
   return data
 }

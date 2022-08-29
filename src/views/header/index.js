@@ -87,7 +87,6 @@ const Header = ({ props }) => {
     const query = useQuery()
     const { isMobile } = useMatchBreakpoints()
     const { connect, disconnect, connected, web3, providerChainID, checkWrongNetwork, address, web3Modal, mobile } = props
-
     const triedEager = useEagerConnect()
     const [modalVisible, setModalVisible] = useState(false)
     const [activatingConnector, setActivatingConnector] = React.useState()
@@ -198,7 +197,6 @@ const Header = ({ props }) => {
                     // })
                     console.log(response.data)
                     setannouncementList(response.data || [])
-
                     const timer = setInterval(() => {
                         move()
                     }, 7000)
