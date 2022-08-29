@@ -253,7 +253,7 @@ const Header = ({ props }) => {
                 </Col>
             </Row>
         </div>
-        <Modal
+        {/* <Modal
             title={address ? shorten(address) : "ConnectWallet"}
             cancelText={true}
             centered
@@ -288,7 +288,7 @@ const Header = ({ props }) => {
                 <img src={app4}></img>
                 <p>More</p>
             </p>
-        </Modal>
+        </Modal> */}
     </div>
 }
 export default Header
