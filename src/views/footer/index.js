@@ -13,7 +13,7 @@ import icon9 from './../../statics/mobile/icon9.png'
 import iosapp from './../../statics/iosipa.png'
 import androidapk from './../../statics/androidapk.png'
 import ios from './../../statics/ios.png'
-import android from './../../statics/androidapk.png'
+import android from './../../statics/android.png'
 import { useTranslation } from './../../contexts/Localization'
 
 const Footer = () => { 
