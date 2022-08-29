@@ -41,7 +41,7 @@ const Web3 = () => {
         const route = document.querySelector('.route_div')
         const marginLeft = document.querySelector('.route_div').style.marginLeft
         console.log(marginLeft,index)
-        if(index<=3){
+        if(index<=4){
             route.style.transform = 'translateX('+(-295*index)+'px)'
             route.style.transition = 'transform 2s'
             setIndex(index+1)
