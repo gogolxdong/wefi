@@ -108,22 +108,28 @@ const NFT = ({ props }) => {
                             }
                             const price = await wefiEquity.getPrice()
                             console.log("wefiEquity price:", ethers.utils.formatUnits(BigNumber.from(price).mul(count), "ether"))
-                            await wefiEquity.casting({ value: BigNumber.from(price).mul(count) })
-
+                            try {
+                                await wefiEquity.casting({ value: BigNumber.from(price).mul(count) })
+                            } catch (error) {
+                                window.alert(error?.reason || error?.data?.data?.message)
+                            }
                         } else {
                             const allowance = await dfs.allowance(address, wefiFunctionAddress)
                             console.log("wefiFunction allowance:", allowance)
                             if (allowance.eq(zero)) {
                                 const receipt = await dfs.approve(wefiFunctionAddress, BigNumber.from(2).pow(255))
                                 await receipt.wait()
-
                             }
                             const price = await wefiFunction.getPrice()
                             console.log("wefiFunction price:", ethers.utils.formatUnits(BigNumber.from(price).mul(count), "ether"))
-                            await wefiFunction.casting({ value: BigNumber.from(price).mul(count) })
+                            try {
+                                await wefiFunction.casting({ value: BigNumber.from(price).mul(count) })
+                            } catch (error) {
+                                window.alert(error?.reason || error?.message)
+                            }
 
                         }
-                    }}>{t('Confirm')}MINT</Button>
+                    }}>{t('Confirm')} MINT</Button>
                 </Col>
                 <Col span={12} className="pre_sale_right">
                     <img src={wefiImg}></img>
