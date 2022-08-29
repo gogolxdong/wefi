@@ -25,8 +25,7 @@ import useMatchBreakpoints from "./../../hooks/useMatchBreakpoints"
 import { useLocation } from "react-router-dom";
 import { useTranslation } from './../../contexts/Localization'
 import { languageList } from 'config/localization/languages'
-
-
+import {  getLanguageCodeFromLS } from '../../../src/contexts/Localization/helpers'
 const { Option } = Select
 export const shorten = (str) => {
     if (str.length < 8) return str
@@ -185,23 +184,41 @@ const Header = ({ props }) => {
             aListDom.append(firstLi)
         }, 2000)
     }
+
+    const enData =[
+        {external_links: "#",
+        title: "WeFi beta version is officially launched, post to earn a million airdrops",
+        uid: "00mb50nox81la4wziywj4uu3ahttq061"
+        },
+        {external_links: "#",
+        title: "WeFi Airdrop Event is coming!",
+        uid: "00mb50nox81la4wziywj4uu3ahttq061"
+        }
+      ]
+      const codeFromStorage = getLanguageCodeFromLS()
     const getAnnouncement = () => {
         const timer = setInterval(() => {
             move()
         }, 5000)
         const width = document
+
+       
         fetch(`https://wefi.space/home-web/index/getAffiche?language=${currentLanguage?.locale}`).then((res) => {
             res.json().then((response) => {
                 if (response.code == 1) {
                     // response.data.map((item)=>{
                     //     item.title=t(item.title)
                     // })
+                    console.log('codeFromStorage',codeFromStorage)
+                    if (codeFromStorage === 'en-US') {
+                        response.data= enData
+                    }
                     console.log(response.data)
                     setannouncementList(response.data || [])
 
-                    const timer = setInterval(() => {
-                        move()
-                    }, 7000)
+                    // const timer = setInterval(() => {
+                    //     move()
+                    // }, 7000)
                 }
             })
 
