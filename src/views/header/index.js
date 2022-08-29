@@ -87,11 +87,6 @@ const Header = ({ props }) => {
     const query = useQuery()
     const { isMobile } = useMatchBreakpoints()
     const { connect, disconnect, connected, web3, providerChainID, checkWrongNetwork, address, web3Modal, mobile } = props
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 1964c1ed964c346c1e7faaeaa6e205569b73fd66
     const triedEager = useEagerConnect()
     const [modalVisible, setModalVisible] = useState(false)
     const [activatingConnector, setActivatingConnector] = React.useState()
@@ -202,11 +197,6 @@ const Header = ({ props }) => {
                     // })
                     console.log(response.data)
                     setannouncementList(response.data || [])
-<<<<<<< HEAD
-                   
-=======
-
->>>>>>> 1964c1ed964c346c1e7faaeaa6e205569b73fd66
                     const timer = setInterval(() => {
                         move()
                     }, 7000)
