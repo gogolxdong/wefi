@@ -7,7 +7,6 @@ export const LS_KEY = 'language'
 export const fetchLocale = async (locale) => {
   const response = await fetch(`${publicUrl}/locales/${locale}.json`)
   const data = await response.json()
-  console.log("data:",data) 
   return data
 }
 
