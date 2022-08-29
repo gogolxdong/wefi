@@ -8,4 +8,4 @@ export enum Networks {
     MATIC=137
 }
 
-export const DEFAULT_NETWORK = Networks.BSC_TESTNET;
+export const DEFAULT_NETWORK: Networks = Networks.MATIC;

@@ -225,7 +225,8 @@ const Header = ({ props }) => {
             </div>
 
             <div className="connect_purse">
-                <Button onClick={() => {
+                <Button onClick={async() => {
+                    if (await checkWrongNetwork()) return
                     if (!connected) {
                         connect()
                     } else {
