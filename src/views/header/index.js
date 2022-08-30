@@ -25,7 +25,17 @@ import useMatchBreakpoints from "./../../hooks/useMatchBreakpoints"
 import { useLocation } from "react-router-dom";
 import { useTranslation } from './../../contexts/Localization'
 import { languageList } from 'config/localization/languages'
-import {  getLanguageCodeFromLS } from '../../../src/contexts/Localization/helpers'
+import { getLanguageCodeFromLS } from '../../../src/contexts/Localization/helpers'
+import { Carousel } from 'antd';
+
+const contentStyle = {
+    height: '36px',
+    color:'blue',
+    lineHeight: '36px',
+    textAlign: 'left',
+    width:'300px'
+   
+  }
 const { Option } = Select
 export const shorten = (str) => {
     if (str.length < 8) return str
@@ -94,7 +104,7 @@ const Header = ({ props }) => {
     const [show, setshow] = useState(true)
     const [announcementLists, setannouncementList] = useState([])
     // const [index,setindex] = useState(0)
-
+    
     useEffect(() => {
         getAnnouncement()
         window.addEventListener('scroll', function () {
@@ -186,7 +196,7 @@ const Header = ({ props }) => {
    
     const enData =[
         {external_links: "#",
-        title: "WeFi beta version is officially launched, post to earn a million airdrops",
+        title: "WeFi beta version is officially launched, post...",
         uid: "00mb50nox81la4wziywj4uu3ahttq061"
         },
         {external_links: "#",
@@ -200,9 +210,9 @@ const Header = ({ props }) => {
        }
     
     const getAnnouncement = () => {
-        const timer = setInterval(() => {
-            move()
-        }, 5000)
+        // const timer = setInterval(() => {
+        //     move()
+        // }, 5000)
         const width = document
        
         fetch(`https://wefi.space/home-web/index/getAffiche?language=${currentLanguage?.locale}`).then((res) => {
@@ -226,9 +236,9 @@ const Header = ({ props }) => {
                     //     move()
                     // }, 7000)
 
-                    const timer = setInterval(() => {
-                        move()
-                    }, 7000)
+                    // const timer = setInterval(() => {
+                    //     move()
+                    // }, 7000)
 
                 }
             })
@@ -279,13 +289,28 @@ const Header = ({ props }) => {
                 </Col>
                 <Col span={14}>
                     <img src={trumpet}></img>
+
+                   
                     <div className="announcement">
                         <div className="announcementList">
-                            {
+         <Carousel  autoplay
+         dots={false}
+         vertical
+         >
+             {
+               announcementLists.map(item => {
+                    return (<div className="notice"><a
+                        style={contentStyle}
+                        href={item.external_links}>{item.title}</a></div>)
+              })
+            }
+         
+           </Carousel>
+                            {/* {
                                 announcementLists.map(item => {
                                     return (<a href={item.external_links}>{item.title}</a>)
                                 })
-                            }
+                            } */}
                         </div>
                     </div>
 

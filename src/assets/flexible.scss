@@ -5,6 +5,11 @@
 @media only screen and (min-height: 700px) {}
 
 @media only screen and (max-width: 415px) {
+    .notice{
+        a{
+            color: #fff !important;
+        }
+    }
     .top_nav {
         width: calc(100vw);
         background-color: #fff;
@@ -151,6 +156,7 @@
                     line-height: 31px;
                     margin-left: 20px;
                     font-size: 12px;
+                    
                     a{
                         color: #fff;
                     }
