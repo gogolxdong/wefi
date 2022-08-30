@@ -156,19 +156,21 @@ const ImgItem = ({picurl,title,desc}) => {
 
 const Why = () => {
     const { t } = useTranslation()
-     
-    const codeFromStorage = getLanguageCodeFromLS()
     let isEnlang = false
     let pclightBg= highlightbg
-   
+    const codeFromStorage = getLanguageCodeFromLS()
+    
+    const [imgUrl, setImgUrl] = useState(pclightBg)
     if (codeFromStorage === 'en-US') {
        
         console.log('en-bg====')
         pclightBg = enhighlightbg
         isEnlang = true
+    } else {
+        pclightBg = highlightbg
     }
 
-    const [imgUrl, setImgUrl] = useState(pclightBg)
+    
     const [realWidth,setRealWidth] = useState('800px')
     useEffect(() => {
         const width = document.documentElement.clientWidth
@@ -179,7 +181,7 @@ const Why = () => {
             setImgUrl(pclightBg)
             setRealWidth('800px')
         }
-    }, [imgUrl])
+    }, [imgUrl,isEnlang])
 
     
     return <div>

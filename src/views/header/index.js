@@ -183,7 +183,7 @@ const Header = ({ props }) => {
             aListDom.append(firstLi)
         }, 2000)
     }
-
+   
     const enData =[
         {external_links: "#",
         title: "WeFi beta version is officially launched, post to earn a million airdrops",
@@ -195,12 +195,15 @@ const Header = ({ props }) => {
         }
       ]
       const codeFromStorage = getLanguageCodeFromLS()
+      if (codeFromStorage === 'en-US') {
+       // setannouncementList(enData || [])
+       }
+    
     const getAnnouncement = () => {
         const timer = setInterval(() => {
             move()
         }, 5000)
         const width = document
-
        
         fetch(`https://wefi.space/home-web/index/getAffiche?language=${currentLanguage?.locale}`).then((res) => {
             res.json().then((response) => {
@@ -208,12 +211,15 @@ const Header = ({ props }) => {
                     // response.data.map((item)=>{
                     //     item.title=t(item.title)
                     // })
-                    console.log('codeFromStorage',codeFromStorage)
+                    // console.log('codeFromStorage',codeFromStorage)
+                    // if (codeFromStorage === 'en-US') {
+                    //     response.data= enData
+                    // }
                     if (codeFromStorage === 'en-US') {
-                        response.data= enData
-                    }
-                    console.log(response.data)
-                    setannouncementList(response.data || [])
+                         setannouncementList(enData || [])
+                        }
+                    if (codeFromStorage !== 'en-US') {
+                    setannouncementList(response.data || [])}
 
 
                     // const timer = setInterval(() => {
@@ -228,6 +234,8 @@ const Header = ({ props }) => {
             })
 
         })
+
+      
     }
     return <div>
         <div className="top_nav">
