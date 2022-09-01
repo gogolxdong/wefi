@@ -94,7 +94,7 @@ const NFT = ({ props }) => {
                         }}>-</Button>
                         {count}
                         <Button className="add" onClick={() => { setcount(count + 1) }}>+</Button></p>
-                    <p>{t('PaymentMethod')}:<Button>USDT</Button><Button>ETH</Button></p>
+                    <p>{t('PaymentMethod')}:<Button>USDT</Button></p>
                     <Button onClick={async () => {
                         const address = await signer.getAddress()
                         const zero = BigNumber.from(0)
@@ -107,7 +107,7 @@ const NFT = ({ props }) => {
                             }
                             const price = await wefiEquity.getPrice()
                             try {
-                                await wefiEquity.casting({ value: BigNumber.from(price).mul(count) })
+                                await wefiEquity.casting(usdtAddress, { value: BigNumber.from(price).mul(count) })
                             } catch (error) {
                                 window.alert(error?.reason || error?.data?.message)
                             }
@@ -119,7 +119,7 @@ const NFT = ({ props }) => {
                             }
                             const price = await wefiFunction.getPrice()
                             try {
-                                await wefiFunction.casting({ value: BigNumber.from(price).mul(count) })
+                                await wefiFunction.casting(usdtAddress, { value: BigNumber.from(price).mul(count) })
                             } catch (error) {
                                 window.alert(error?.reason || error?.message)
                             }
