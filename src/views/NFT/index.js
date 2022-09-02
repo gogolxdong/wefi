@@ -20,12 +20,12 @@ const NFT = ({ props }) => {
     const { t } = useTranslation()
     let { connect, provider, hasCachedProvider, chainID, connected } = props;
 
-    const wefiFunctionAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" //MATIC
-    const wefiEquityAddress = "0x31d0f1c5e163f9e84b15073bca90a3bf87baad88" //MATIC
+    const wefiFunctionAddress = "0x71cE746071371Cd90F4562789EA1186069871517" //polygon mainnet
+    const wefiEquityAddress = "0x9a6D2F2124915e3091E52e00e286AE3e3A5Bb248" //polygon mainnet
     // const wefiFunctionAddress = "0x4D590160C50f58fC01EDC2ed1440CDF9FFD41D63"
     // const wefiEquityAddress = "0x56890896501540344098376B431Bd2e29dbe1118"
-    // const usdtAddress = "0xd49f9D8F0aB1C2F056e1F0232d5b9989F8a12CeF" // bsc testnet
-    const usdtAddress = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F" // polygen mainnet
+
+    const usdtAddress = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F" // polygon mainnet
     const signer = provider.getSigner()
     const wefiFunction = new ethers.Contract(wefiFunctionAddress, wefiFunctionAbi, signer)
     const wefiEquity = new ethers.Contract(wefiEquityAddress, wefiEquityAbi, signer)
@@ -94,36 +94,32 @@ const NFT = ({ props }) => {
                         }}>-</Button>
                         {count}
                         <Button className="add" onClick={() => { setcount(count + 1) }}>+</Button></p>
-                    <p>{t('PaymentMethod')}:<Button>USDT</Button><Button>ETH</Button></p>
+                    <p>{t('PaymentMethod')}:<Button>USDT</Button></p>
                     <Button onClick={async () => {
                         const address = await signer.getAddress()
                         const zero = BigNumber.from(0)
 
                         if (wefiImg == equityNFT) {
                             const allowance = await dfs.allowance(address, wefiEquityAddress)
-                            console.log("wefiEquity allowance:", allowance)
                             if (allowance.eq(zero)) {
                                 const receipt = await dfs.approve(wefiEquityAddress, BigNumber.from(2).pow(255))
                                 await receipt.wait()
                             }
                             const price = await wefiEquity.getPrice()
-                            console.log("wefiEquity price:", ethers.utils.formatUnits(BigNumber.from(price).mul(count), "ether"))
                             try {
-                                await wefiEquity.casting({ value: BigNumber.from(price).mul(count) })
+                                await wefiEquity.casting(usdtAddress, { value: BigNumber.from(price).mul(count) })
                             } catch (error) {
                                 window.alert(error?.reason || error?.data?.message)
                             }
                         } else {
                             const allowance = await dfs.allowance(address, wefiFunctionAddress)
-                            console.log("wefiFunction allowance:", allowance)
                             if (allowance.eq(zero)) {
                                 const receipt = await dfs.approve(wefiFunctionAddress, BigNumber.from(2).pow(255))
                                 await receipt.wait()
                             }
                             const price = await wefiFunction.getPrice()
-                            console.log("wefiFunction price:", ethers.utils.formatUnits(BigNumber.from(price).mul(count), "ether"))
                             try {
-                                await wefiFunction.casting({ value: BigNumber.from(price).mul(count) })
+                                await wefiFunction.casting(usdtAddress, { value: BigNumber.from(price).mul(count) })
                             } catch (error) {
                                 window.alert(error?.reason || error?.message)
                             }

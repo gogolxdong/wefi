@@ -30,12 +30,12 @@ import { Carousel } from 'antd';
 
 const contentStyle = {
     height: '36px',
-    color:'blue',
+    color: 'blue',
     lineHeight: '36px',
     textAlign: 'left',
-    width:'300px'
-   
-  }
+    width: '300px'
+
+}
 const { Option } = Select
 export const shorten = (str) => {
     if (str.length < 8) return str
@@ -104,7 +104,7 @@ const Header = ({ props }) => {
     const [show, setshow] = useState(true)
     const [announcementLists, setannouncementList] = useState([])
     // const [index,setindex] = useState(0)
-    
+
     useEffect(() => {
         getAnnouncement()
         window.addEventListener('scroll', function () {
@@ -193,28 +193,30 @@ const Header = ({ props }) => {
             aListDom.append(firstLi)
         }, 2000)
     }
-   
-    const enData =[
-        {external_links: "#",
-        title: "WeFi beta version is officially launched, post...",
-        uid: "00mb50nox81la4wziywj4uu3ahttq061"
+
+    const enData = [
+        {
+            external_links: "#",
+            title: "WeFi beta version is officially launched, post...",
+            uid: "00mb50nox81la4wziywj4uu3ahttq061"
         },
-        {external_links: "#",
-        title: "WeFi Airdrop Event is coming!",
-        uid: "00mb50nox81la4wziywj4uu3ahttq061"
+        {
+            external_links: "#",
+            title: "WeFi Airdrop Event is coming!",
+            uid: "00mb50nox81la4wziywj4uu3ahttq061"
         }
-      ]
-      const codeFromStorage = getLanguageCodeFromLS()
-      if (codeFromStorage === 'en-US') {
-       // setannouncementList(enData || [])
-       }
-    
+    ]
+    const codeFromStorage = getLanguageCodeFromLS()
+    if (codeFromStorage === 'en-US') {
+        // setannouncementList(enData || [])
+    }
+
     const getAnnouncement = () => {
         // const timer = setInterval(() => {
         //     move()
         // }, 5000)
         const width = document
-       
+
         fetch(`https://wefi.space/home-web/index/getAffiche?language=${currentLanguage?.locale}`).then((res) => {
             res.json().then((response) => {
                 if (response.code == 1) {
@@ -226,10 +228,11 @@ const Header = ({ props }) => {
                     //     response.data= enData
                     // }
                     if (codeFromStorage === 'en-US') {
-                         setannouncementList(enData || [])
-                        }
+                        setannouncementList(enData || [])
+                    }
                     if (codeFromStorage !== 'en-US') {
-                    setannouncementList(response.data || [])}
+                        setannouncementList(response.data || [])
+                    }
 
 
                     // const timer = setInterval(() => {
@@ -245,7 +248,7 @@ const Header = ({ props }) => {
 
         })
 
-      
+
     }
     return <div>
         <div className="top_nav">
@@ -267,7 +270,7 @@ const Header = ({ props }) => {
             </div>
 
             <div className="connect_purse">
-                <Button onClick={async() => {
+                <Button onClick={async () => {
                     if (await checkWrongNetwork()) return
                     if (!connected) {
                         connect()
@@ -290,22 +293,22 @@ const Header = ({ props }) => {
                 <Col span={14}>
                     <img src={trumpet}></img>
 
-                   
+
                     <div className="announcement">
                         <div className="announcementList">
-         <Carousel  autoplay
-         dots={false}
-         vertical
-         >
-             {
-               announcementLists.map(item => {
-                    return (<div className="notice"><a
-                        style={contentStyle}
-                        href={item.external_links}>{item.title}</a></div>)
-              })
-            }
-         
-           </Carousel>
+                            <Carousel autoplay
+                                dots={false}
+                                vertical
+                            >
+                                {
+                                    announcementLists.map(item => {
+                                        return (<div className="notice"><a
+                                            style={contentStyle}
+                                            href={item.external_links}>{item.title}</a></div>)
+                                    })
+                                }
+
+                            </Carousel>
                             {/* {
                                 announcementLists.map(item => {
                                     return (<a href={item.external_links}>{item.title}</a>)
