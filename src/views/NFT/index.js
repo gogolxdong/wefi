@@ -76,7 +76,7 @@ const NFT = ({ props }) => {
                     <p>WeFi {t('functional')} NFT <br></br>WeFi {t('equity')} NFT {t('presale')}</p>
                     <div className="sale_img">
                         <img src={wefiImg}></img>
-                        <p>{t('PresalePrice')} xxxx USDT</p>
+                        <p>{t('PresalePrice')} **** USDT</p>
                     </div>
                     <p>{t('mintNFT')}</p>
                     <p>
@@ -133,7 +133,7 @@ const NFT = ({ props }) => {
                 </Col>
                 <Col span={12} className="pre_sale_right">
                     <img src={wefiImg}></img>
-                    <p>{t('PresalePrice')} xxxx USDT</p>
+                    <p>{t('PresalePrice')} **** USDT</p>
                 </Col>
 
             </Row>

@@ -47,7 +47,7 @@ const BBQ = ({ props }) => {
                     <p>{t('BBQPresale')}</p>
                     <div className="sale_img">
                         <img src={right}></img>
-                        <p>{t('PresalePrice')} xxxx USDT</p>
+                        <p>{t('PresalePrice')} **** USDT</p>
                     </div>
                     <p>{t('MintQty')}:
                         <Button className="cut" onClick={() => { if (count > 0) setcount(count - 1) }}>-</Button>
@@ -62,7 +62,7 @@ const BBQ = ({ props }) => {
                 </Col>
                 <Col span={12} className="pre_sale_right">
                     <img src={right}></img>
-                    <p>{t('PresalePrice')} xxxx USDT</p>
+                    <p>{t('PresalePrice')} **** USDT</p>
                 </Col>
             </Row>
         </div>

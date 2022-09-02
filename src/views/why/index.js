@@ -2,6 +2,7 @@ import './index.scss'
 import { Row, Col } from 'antd'
 import highlightbg from './../../statics/bg3.png'
 import highlightbgM from './../../statics/mobile/bg3.png'
+import enheight from './../../statics/enheight.png'
 import bg4M from './../../statics/mobile/bg4.png'
 import plate1 from './../../statics/guanshui.png'
 import plate2 from './../../statics/kol.png'
@@ -158,6 +159,7 @@ const Why = () => {
     const { t } = useTranslation()
     let isEnlang = false
     let pclightBg= highlightbg
+    let hightMbg = highlightbgM
     const codeFromStorage = getLanguageCodeFromLS()
     
     const [imgUrl, setImgUrl] = useState(pclightBg)
@@ -165,9 +167,11 @@ const Why = () => {
        
         console.log('en-bg====')
         pclightBg = enhighlightbg
+        hightMbg = enheight
         isEnlang = true
     } else {
         pclightBg = highlightbg
+        hightMbg =  highlightbgM
     }
 
     
@@ -175,7 +179,7 @@ const Why = () => {
     useEffect(() => {
         const width = document.documentElement.clientWidth
         if (width <= 415) {
-            setImgUrl(highlightbgM)
+            setImgUrl(hightMbg)
             setRealWidth('375px')
         } else {
             setImgUrl(pclightBg)

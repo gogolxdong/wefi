@@ -9,6 +9,7 @@ import {  getLanguageCodeFromLS } from '../../../src/contexts/Localization/helpe
 const IntroduceWrap = styled.div`
   background-image:url(${props => props.isEnLang ? enbg : zhbg});
   background-size: 100%;
+  background-repeat: no-repeat;
 
 `
 const Introduce = () => {
